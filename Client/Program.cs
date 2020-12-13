@@ -1,12 +1,10 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Blazor.IndexedDB.Framework;
+using ForStock.Client.ViewModels;
 
 namespace ForStock.Client
 {
@@ -18,6 +16,8 @@ namespace ForStock.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddSingleton<IIndexedDbFactory, IndexedDbFactory>();
+            builder.Services.AddSingleton<IIntroViewModel, IntroViewModel>();
 
             await builder.Build().RunAsync();
         }

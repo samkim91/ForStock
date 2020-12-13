@@ -1,15 +1,16 @@
 ﻿@page "/intro"
-@using ForStock.Shared
+@using ForStock.Client.ViewModels
+@inject IIntroViewModel _introViewModel
 
 <div>
     <div>
         <div>API key</div>
-        <input type="text" @bind-value="ApiKey" class="form-control" placeholder="API key를 입력하세요.">
+        <input type="text" @bind-value="_introViewModel.ApiKey" class="form-control" placeholder="API key를 입력하세요.">
     </div>
     <br />
     <div>
         <div>주식코드</div>
-        <input type="text" @bind-value="StockCode" class="form-control" placeholder="주식코드를 입력하세요.">
+        <input type="text" @bind-value="_introViewModel.StockCode" class="form-control" placeholder="주식코드를 입력하세요.">
     </div>
     <br />
     <div>
@@ -23,20 +24,9 @@
         </div>
     </div>
     <br />
-    <button class="btn btn-primary" @onclick="UpdateInfo">Update</button>
+    <button class="btn btn-primary" @onclick="_introViewModel.UpdateOnclick">Update</button>
 </div>
 
 <div>
     @* 기업정보 보여줄 곳 *@
 </div>
-
-@code {
-    private string ApiKey { get; set; }
-    private string StockCode { get; set; }
-    private string CorpCode { get; set; }
-
-    private void UpdateInfo()
-    {
-        @* CorpCode = CorpCodeHelper.GetCorpCode(StockCode); *@
-    }
-}

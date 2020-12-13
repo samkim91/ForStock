@@ -24,5 +24,7 @@ namespace ForStock.Server.Controllers
         // public async Task<User> GetProfile(int userId){
         //     return await  _context.Users.Where(u => u.UserId == userId).FirstOrDefaultAsync();
         // }
+        
+    
     }
 }

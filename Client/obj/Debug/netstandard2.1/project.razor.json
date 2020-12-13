@@ -8,55 +8,167 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 665154527,
+        "HashCode": 786903995,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Shared.SurveyPrompt",
+        "Name": "ForStock.Client.App",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt"
+          "Common.TypeName": "ForStock.Client.App"
         }
       },
       {
-        "HashCode": -766242531,
+        "HashCode": -898993734,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Shared.SurveyPrompt",
+        "Name": "ForStock.Client.App",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ForStock.Client.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "ForStock.Client.App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt",
+          "Common.TypeName": "ForStock.Client.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1521068943,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Analysis",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Analysis"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Analysis"
+        }
+      },
+      {
+        "HashCode": -375744676,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Analysis",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Analysis"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Analysis",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1215801976,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Index",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Index"
+        }
+      },
+      {
+        "HashCode": 69289438,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Index",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -868109632,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Visualization",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Visualization"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Visualization"
+        }
+      },
+      {
+        "HashCode": -2136658456,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Visualization",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Visualization"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Visualization",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 455755846,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Intro",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Intro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Intro"
+        }
+      },
+      {
+        "HashCode": 1248197657,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Intro",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Intro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Intro",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -190,167 +302,55 @@
         }
       },
       {
-        "HashCode": 1521068943,
+        "HashCode": 665154527,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Analysis",
+        "Name": "ForStock.Client.Shared.SurveyPrompt",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Analysis"
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Analysis"
+          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt"
         }
       },
       {
-        "HashCode": -375744676,
+        "HashCode": -766242531,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Analysis",
+        "Name": "ForStock.Client.Shared.SurveyPrompt",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ForStock.Client.Pages.Analysis"
+            "TagName": "ForStock.Client.Shared.SurveyPrompt"
           }
         ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Analysis",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -868109632,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Visualization",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
+        "BoundAttributes": [
           {
-            "TagName": "Visualization"
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Visualization"
-        }
-      },
-      {
-        "HashCode": -2136658456,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Visualization",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Visualization"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Visualization",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 455755846,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Intro",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Intro"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Intro"
-        }
-      },
-      {
-        "HashCode": 1248197657,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Intro",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Intro"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Intro",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1215801976,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Index",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Index"
-        }
-      },
-      {
-        "HashCode": 69289438,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Index",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 786903995,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App"
-        }
-      },
-      {
-        "HashCode": -898993734,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App",
+          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

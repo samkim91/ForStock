@@ -165,8 +165,6 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.AssemblyI
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.csproj.CoreCompileInputs.cache
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.RazorComponent.input.cache
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\App.razor.g.cs
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Counter.razor.g.cs
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\FetchData.razor.g.cs
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Index.razor.g.cs
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -177,8 +175,6 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.TagHelper
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.TagHelpers.output.cache
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.RazorCoreGenerate.cache
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\App.razor.g.cs
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Pages\Counter.razor.g.cs
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Pages\FetchData.razor.g.cs
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Pages\Index.razor.g.cs
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Shared\MainLayout.razor.g.cs
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Shared\NavMenu.razor.g.cs
@@ -187,7 +183,6 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\_Imports.razor.g.cs
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.RazorTargetAssemblyInfo.cache
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.csproj.CopyComplete
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\blazor\unlinked.output
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\oqnCSSv-9cgqf_TnnYfCyIgzN5MANOZ0scfT8Aq8sFU=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\99dseBOagY3mzu5Y8Eqm8gRI_o8QbbCp7R2Ew9bQ_5E=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\ZxXy75PYbzJxNfAc-SAP1nUYm4gt1jSaOpFnBb9m85M=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\BaZPMj95_YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=.hash
@@ -240,14 +235,12 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\_kkwUt5LUrFrnFc
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\rvTW0d54uLW0iDMAX30lpmr9f8uHoS3YYkEU5zNGhyc=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\LqwA2Rpm96Ualk0IhLZar87kfRCyKHzHTeTt2jYhm7M=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\czNf3btAeBW-vvID5LAfgcsNZ_GM3ssVuPaMflcg0rs=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\zdT9k-q8A0K-Kv7P36xgFoj3mXM_jdqxW-8-2TcWre8=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\e0wbrcBKJfqSB5DCO8Fc9LGwBQMIRqKoqva5ybS7M8c=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\mPoqx7XczFHBWk3gRNn0hc9ekG1OvkKY4XiKRY5Mj5U=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\3S0qzYaBEKOBXarzVLNzNAFXlwJr6nI3lFlYUpQTPH8=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\UC-3Rm1NkdNdlIrzYARo_dO-HDlS5mhPxo0IQv7kma8=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\SPHS1EAPAcMFN4TEIUYl3FWtoCQTsNJch0XVGgok1eE=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\blazor\blazor.boot.json
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\a6-_UruZSrKGFZ-SuY98F-7BNc14A9eHz0lKclHlPwY=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\service-worker-assets.js.gz
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\ForStock.Client.dll.gz
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\System.Net.Http.Json.dll.gz
@@ -376,4 +369,14 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.dll
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\ForStock.Client.pdb
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\blazor\serviceworkers\wwwroot\service-worker.js
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\blazor\service-worker-assets.js
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\8EvfztU_mUQlCiDrbCVrQpuj1Xtvs3_-DVF2WFj-j_s=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Intro.razor.g.cs
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Pages\Intro.razor.g.cs
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Analysis.razor.g.cs
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Pages\Analysis.razor.g.cs
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Visualization.razor.g.cs
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\Razor\Pages\Visualization.razor.g.cs
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\9HD7oqTjiTQiXS45w2LDKQDcELZNn-XTpwawumJSF9U=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\F8ZtrKILsLoxhS_jDoEchHgVAMt9CypS2sJswLWtUXM=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\LxsE_FiBTy6UVjrsWCtAIO2jWnG13G7LhijpG1k5OEQ=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\yazI6cMK5vccCPEywQW0oS-4SEKy81lLRscK13Q4KnE=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\_xcAW7QkBIYHugRMM-FkZdsUytHTkyLa1NKQYOuIlmw=.hash

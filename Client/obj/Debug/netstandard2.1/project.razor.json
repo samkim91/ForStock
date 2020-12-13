@@ -8,134 +8,55 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 786903995,
+        "HashCode": 665154527,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
+        "Name": "ForStock.Client.Shared.SurveyPrompt",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App"
+          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt"
         }
       },
       {
-        "HashCode": -898993734,
+        "HashCode": -766242531,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
+        "Name": "ForStock.Client.Shared.SurveyPrompt",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ForStock.Client.App"
+            "TagName": "ForStock.Client.Shared.SurveyPrompt"
           }
         ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -771258027,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Counter",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
+        "BoundAttributes": [
           {
-            "TagName": "Counter"
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": 756090238,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Counter",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1215801976,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Index",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Index"
-        }
-      },
-      {
-        "HashCode": 69289438,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Index",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1366162920,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.FetchData",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": 1553539041,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.FetchData",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.FetchData",
+          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -269,55 +190,167 @@
         }
       },
       {
-        "HashCode": 665154527,
+        "HashCode": 1521068943,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Shared.SurveyPrompt",
+        "Name": "ForStock.Client.Pages.Analysis",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "Analysis"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt"
+          "Common.TypeName": "ForStock.Client.Pages.Analysis"
         }
       },
       {
-        "HashCode": -766242531,
+        "HashCode": -375744676,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Shared.SurveyPrompt",
+        "Name": "ForStock.Client.Pages.Analysis",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ForStock.Client.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "ForStock.Client.Pages.Analysis"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt",
+          "Common.TypeName": "ForStock.Client.Pages.Analysis",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -868109632,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Visualization",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Visualization"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Visualization"
+        }
+      },
+      {
+        "HashCode": -2136658456,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Visualization",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Visualization"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Visualization",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 455755846,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Intro",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Intro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Intro"
+        }
+      },
+      {
+        "HashCode": 1248197657,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Intro",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Intro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Intro",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1215801976,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Index",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Index"
+        }
+      },
+      {
+        "HashCode": 69289438,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Index",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 786903995,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.App",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.App"
+        }
+      },
+      {
+        "HashCode": -898993734,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.App",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -11792,11 +11825,6 @@
       "FileKind": "componentImport"
     },
     {
-      "FilePath": "d:\\MyProjects\\ForStock\\Client\\Pages\\FetchData.razor",
-      "TargetPath": "Pages\\FetchData.razor",
-      "FileKind": "component"
-    },
-    {
       "FilePath": "d:\\MyProjects\\ForStock\\Client\\Shared\\NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
       "FileKind": "component"
@@ -11807,13 +11835,23 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "d:\\MyProjects\\ForStock\\Client\\Pages\\Intro.razor",
+      "TargetPath": "Pages\\Intro.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "d:\\MyProjects\\ForStock\\Client\\Pages\\Index.razor",
       "TargetPath": "Pages\\Index.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "d:\\MyProjects\\ForStock\\Client\\Pages\\Counter.razor",
-      "TargetPath": "Pages\\Counter.razor",
+      "FilePath": "d:\\MyProjects\\ForStock\\Client\\Pages\\Analysis.razor",
+      "TargetPath": "Pages\\Analysis.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "d:\\MyProjects\\ForStock\\Client\\Pages\\Visualization.razor",
+      "TargetPath": "Pages\\Visualization.razor",
       "FileKind": "component"
     },
     {

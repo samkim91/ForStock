@@ -1,0 +1,42 @@
+﻿@page "/intro"
+@using ForStock.Shared
+
+<div>
+    <div>
+        <div>API key</div>
+        <input type="text" @bind-value="ApiKey" class="form-control" placeholder="API key를 입력하세요.">
+    </div>
+    <br />
+    <div>
+        <div>주식코드</div>
+        <input type="text" @bind-value="StockCode" class="form-control" placeholder="주식코드를 입력하세요.">
+    </div>
+    <br />
+    <div>
+        <div>개별(OFS)/연결(CFS)</div>
+        <div>
+            <select class="custom-select">
+                <option selected>선택...</option>
+                <option value="1">개별(OFS)</option>
+                <option value="2">연결(CFS)</option>
+            </select>
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-primary" @onclick="UpdateInfo">Update</button>
+</div>
+
+<div>
+    @* 기업정보 보여줄 곳 *@
+</div>
+
+@code {
+    private string ApiKey { get; set; }
+    private string StockCode { get; set; }
+    private string CorpCode { get; set; }
+
+    private void UpdateInfo()
+    {
+        @* CorpCode = CorpCodeHelper.GetCorpCode(StockCode); *@
+    }
+}

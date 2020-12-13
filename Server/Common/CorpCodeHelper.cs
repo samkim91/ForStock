@@ -1,9 +1,8 @@
-using System.Xml;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ForStock.Shared
+namespace ForStock.Server.Common
 {
     public static class CorpCodeHelper{
 

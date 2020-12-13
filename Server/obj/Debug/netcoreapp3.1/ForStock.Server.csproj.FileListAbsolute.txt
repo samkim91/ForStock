@@ -172,7 +172,6 @@ D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Compo
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
@@ -213,3 +212,10 @@ D:\MyProjects\ForStock\Server\obj\Debug\netcoreapp3.1\staticwebassets\ForStock.S
 D:\MyProjects\ForStock\Server\obj\Debug\netcoreapp3.1\ForStock.Server.dll
 D:\MyProjects\ForStock\Server\obj\Debug\netcoreapp3.1\ForStock.Server.pdb
 D:\MyProjects\ForStock\Server\obj\Debug\netcoreapp3.1\ForStock.Server.genruntimeconfig.cache
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Browser.dll
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Blazor.IndexedDB.Framework.dll
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\TG.Blazor.IndexedDB.dll
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\TG.Blazor.IndexedDb.JS.dll
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Http.dll
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll

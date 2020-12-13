@@ -20,10 +20,10 @@ namespace ForStock.Server.Controllers
             this.logger = logger;
         }
 
-        // [HttpGet("getprofile/{userId}")]
-        // public async Task<User> GetProfile(int userId){
-        //     return await  _context.Users.Where(u => u.UserId == userId).FirstOrDefaultAsync();
-        // }
+        [HttpGet("getcorpinfo/{stockcode}")]
+        public async Task<User> GetProfile(int userId){
+            return await  _context.Users.Where(u => u.UserId == userId).FirstOrDefaultAsync();
+        }
         
     
     }

@@ -2846,68 +2846,35 @@
         }
       },
       {
-        "HashCode": 786903995,
+        "HashCode": 455755846,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
+        "Name": "ForStock.Client.Pages.Intro",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "Intro"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App"
+          "Common.TypeName": "ForStock.Client.Pages.Intro"
         }
       },
       {
-        "HashCode": -898993734,
+        "HashCode": 1248197657,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
+        "Name": "ForStock.Client.Pages.Intro",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ForStock.Client.App"
+            "TagName": "ForStock.Client.Pages.Intro"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1521068943,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Analysis",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Analysis"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Analysis"
-        }
-      },
-      {
-        "HashCode": -375744676,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Analysis",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Analysis"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Analysis",
+          "Common.TypeName": "ForStock.Client.Pages.Intro",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -2945,35 +2912,35 @@
         }
       },
       {
-        "HashCode": 455755846,
+        "HashCode": 1521068943,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Intro",
+        "Name": "ForStock.Client.Pages.Analysis",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Intro"
+            "TagName": "Analysis"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Intro"
+          "Common.TypeName": "ForStock.Client.Pages.Analysis"
         }
       },
       {
-        "HashCode": 1248197657,
+        "HashCode": -375744676,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Intro",
+        "Name": "ForStock.Client.Pages.Analysis",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ForStock.Client.Pages.Intro"
+            "TagName": "ForStock.Client.Pages.Analysis"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Intro",
+          "Common.TypeName": "ForStock.Client.Pages.Analysis",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -3189,6 +3156,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 786903995,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.App",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.App"
+        }
+      },
+      {
+        "HashCode": -898993734,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.App",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

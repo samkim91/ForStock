@@ -10,7 +10,7 @@ namespace ForStock.Server.Common
 
         public static string GetCorpCode(string stockCode = null, string corpName = null)
         {
-            XElement root = XElement.Load("D:\\MyProjects\\ForStock\\Client\\Shared\\CORPCODE.xml");
+            XElement root = XElement.Load("D:\\MyProjects\\ForStock\\Server\\Common\\CORPCODE.xml");
 
             IEnumerable<XElement> result =
                 from el in root.Elements("list")

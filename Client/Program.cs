@@ -18,7 +18,11 @@ namespace ForStock.Client
             //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddSingleton<IIndexedDbFactory, IndexedDbFactory>();
             builder.Services.AddHttpClient<IIntroViewModel, IntroViewModel>
-                ("ForStock", Client => Client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));;
+                ("ServerAPI", Client => Client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
+            builder.Services.AddHttpClient("DartAPI", Client => Client.BaseAddress = new Uri("https://opendart.fss.or.kr/api/"));
+
+            
+            
 
             await builder.Build().RunAsync();
         }

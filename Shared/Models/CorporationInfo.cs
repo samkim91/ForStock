@@ -11,7 +11,7 @@ namespace ForStock.Shared.Model
         public string CeoName { get; set; }
         public string CorpClass { get; set; }
         public string CorpNumber { get; set; }
-        public string businessNumber { get; set; }
+        public string BusinessNumber { get; set; }
         public string Address { get; set; }
         public string Homepage { get; set; }
         public string IrHomepage { get; set; }

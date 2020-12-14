@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ForStock.Shared.Model;
+using ForStock.Server.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -20,11 +22,11 @@ namespace ForStock.Server.Controllers
             this.logger = logger;
         }
 
-        [HttpGet("getcorpinfo/{stockcode}")]
-        public async Task<User> GetProfile(int userId){
-            return await  _context.Users.Where(u => u.UserId == userId).FirstOrDefaultAsync();
+        [HttpGet("info/{stockcode}")]
+        public async Task<string> GetProfile(string stockcode){
+            string corpCode = CorpCodeHelper.GetCorpCode(stockcode);
+            
+            return await Task.FromResult("\""+corpCode+"\"");
         }
-        
-    
     }
 }

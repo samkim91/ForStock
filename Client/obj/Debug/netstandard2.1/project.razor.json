@@ -8,68 +8,35 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 455755846,
+        "HashCode": 786903995,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Intro",
+        "Name": "ForStock.Client.App",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Intro"
+            "TagName": "App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Intro"
+          "Common.TypeName": "ForStock.Client.App"
         }
       },
       {
-        "HashCode": 1248197657,
+        "HashCode": -898993734,
         "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Intro",
+        "Name": "ForStock.Client.App",
         "AssemblyName": "ForStock.Client",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "ForStock.Client.Pages.Intro"
+            "TagName": "ForStock.Client.App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Intro",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1215801976,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Index",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Index"
-        }
-      },
-      {
-        "HashCode": 69289438,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Index",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Index",
+          "Common.TypeName": "ForStock.Client.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -107,6 +74,39 @@
         }
       },
       {
+        "HashCode": 1215801976,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Index",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Index"
+        }
+      },
+      {
+        "HashCode": 69289438,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Index",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -868109632,
         "Kind": "Components.Component",
         "Name": "ForStock.Client.Pages.Visualization",
@@ -136,6 +136,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ForStock.Client.Pages.Visualization",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 455755846,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Intro",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Intro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Intro"
+        }
+      },
+      {
+        "HashCode": 1248197657,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Intro",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Intro"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Intro",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -318,39 +351,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ForStock.Client.Shared.SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 786903995,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App"
-        }
-      },
-      {
-        "HashCode": -898993734,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.App",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

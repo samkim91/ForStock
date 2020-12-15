@@ -42,7 +42,7 @@ namespace ForStock.Client.ViewModels
 
         public async Task UpdateOnclick()
         {
-            CorpCode = await _httpClient.GetFromJsonAsync<string>("corporation/info/" + StockCode);
+            CorpCode = await _httpClient.GetFromJsonAsync<string>("corporation/info/"+StockCode+"/"+ApiKey);
 
             // 기업 정보를 API로 불러오는 코드 필요
             // HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, "company.json?crtfc_key="+ApiKey+"&corp_code="+CorpCode);
@@ -51,7 +51,7 @@ namespace ForStock.Client.ViewModels
             // HttpResponseMessage responseMessage = await httpClient.SendAsync(requestMessage);
             string result = await httpClient.GetFromJsonAsync<string>("company.json?crtfc_key="+ApiKey+"&corp_code="+CorpCode);
             // TODO.. CORS 에러가 발생하고 있다.. Services에 AddCors로 해결할 수 있는 것으로 보인다.
-            
+            // 결국... 서버를 통해서 정보를 가져오는게 가장 좋다 ... 쑤까불럇
         }
     }
 }

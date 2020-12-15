@@ -455,8 +455,7 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bi
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\System.Runtime.dll.br
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\eHxYHp2cTTqJkcasgDf440kmaO2tEDnddzEajLzH_vY=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\zkzbn2Jr0gLVnuXgffcmrppY3OtPJIN9i34AVnuLxcE=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\V7FjwYZP9pKGmwouJkLyPFYiJb-nEgp3FBTTDTREWs0=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\vzxgSwsSaP-KS8IKap2uiPrR6TmhcXsHshI5OiLhsuA=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\KKpyaUqwfkOqvjcYbltlseWPWPQeeRziqovRgHgTHZA=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\imjJJQMN0HlRAxoXTrLdYQpvUhUNM5ApUdrt_k9fwv8=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\fn29NQNcCIfCMQCVr5qExA-tA1XKeYJTm4mXch5lcnM=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\jMVrVdxoE-hS3XGGC7oKy5L8JmfbFliC6wGssOElNzs=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\lbZ4_kt_GN1MqKEiFCbTB0AzUrwbo69HJk6NbrDUUYk=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\1f-9LwrH8hh1Jqq9m4rCFvZFh4XkJ7i4Rmm_a1JsU6s=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\hjdItg0l5Dg-pemL2805__g1PxAf2FIO-pBWWGXTy4k=.hash

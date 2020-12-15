@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using Microsoft.Net.Http.Headers;
 
 namespace ForStock.Server
 {
@@ -25,6 +26,14 @@ namespace ForStock.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", policy =>
+                    policy.WithOrigins("http://localhost:5000", "https://localhost:5001")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +56,7 @@ namespace ForStock.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

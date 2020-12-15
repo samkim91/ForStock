@@ -22,10 +22,12 @@ namespace ForStock.Server.Controllers
             this.logger = logger;
         }
 
-        [HttpGet("info/{stockcode}")]
-        public async Task<string> GetProfile(string stockcode){
+        [HttpGet("info/{stockcode}/{apikey}")]
+        public async Task<string> GetProfile(string stockcode, string apikey){
             string corpCode = CorpCodeHelper.GetCorpCode(stockcode);
             
+            // https://opendart.fss.or.kr/api/
+
             return await Task.FromResult("\""+corpCode+"\"");
         }
     }

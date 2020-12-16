@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
 using Microsoft.Net.Http.Headers;
+using System;
 
 namespace ForStock.Server
 {
@@ -33,7 +34,18 @@ namespace ForStock.Server
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials());
-             });
+            });
+
+            services.AddHttpClient("DartAPI", Client =>
+            {
+                Client.BaseAddress = new Uri("https://opendart.fss.or.kr/");
+                // 하루 종일 삽질한 결과... request를 보낼 때 header 정보가 엄청 중요하다는 것을 알았다. Open Dart를 사용하는 것에는 User-Agent가 없으면 response가 안 온다..
+                Client.DefaultRequestHeaders.Add("Accept", "*/*");
+                Client.DefaultRequestHeaders.Add("Accept-Language", new string[] { "ko-KR", "ko" });
+                Client.DefaultRequestHeaders.Add("Accept-Encoding", new string[] { "kgzip", "deflate", "br" });
+                Client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                Client.DefaultRequestHeaders.Add("User-Agent", "localhost");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

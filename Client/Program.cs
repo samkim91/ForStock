@@ -19,10 +19,6 @@ namespace ForStock.Client
             builder.Services.AddSingleton<IIndexedDbFactory, IndexedDbFactory>();
             builder.Services.AddHttpClient<IIntroViewModel, IntroViewModel>
                 ("ServerAPI", Client => Client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
-            builder.Services.AddHttpClient("DartAPI", Client => Client.BaseAddress = new Uri("https://opendart.fss.or.kr/api/"));
-
-            
-            
 
             await builder.Build().RunAsync();
         }

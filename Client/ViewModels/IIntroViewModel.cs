@@ -4,23 +4,23 @@ namespace ForStock.Client.ViewModels
 {
     public interface IIntroViewModel
     {
-        public string ApiKey { get; set; }
-        public string StockCode { get; set; }
-        public string CorpCode { get; set; }
-        public string CorpName { get; set; }
-        public string CorpNameEng { get; set; }
-        public string CeoName { get; set; }
-        public string CorpClass { get; set; }
-        public string CorpNumber { get; set; }
-        public string BusinessNumber { get; set; }
-        public string Address { get; set; }
-        public string Homepage { get; set; }
-        public string IrHomepage { get; set; }
-        public string PhoneNumber { get; set; }
-        public string FaxNumber { get; set; }
-        public string SectorCode { get; set; }
-        public string EstablishDate { get; set; }
-        public string AccountMonth { get; set; }
+        public string api_key { get; set; }
+        public string stock_code { get; set; }
+        public string corp_code { get; set; }
+        public string corp_name { get; set; }
+        public string corp_name_eng { get; set; }
+        public string ceo_nm { get; set; }
+        public string corp_cls { get; set; }
+        public string jurir_no { get; set; }
+        public string bizr_no { get; set; }
+        public string adres { get; set; }
+        public string hm_url { get; set; }
+        public string ir_url { get; set; }
+        public string phn_no { get; set; }
+        public string fax_no { get; set; }
+        public string induty_code { get; set; }
+        public string est_dt { get; set; }
+        public string acc_mt { get; set; }
 
         public Task UpdateOnclick();
     }

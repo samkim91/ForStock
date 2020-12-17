@@ -16,10 +16,10 @@
     <div>
         <div>개별(OFS)/연결(CFS)</div>
         <div>
-            <select class="custom-select">
+            <select class="custom-select" @bind="_introViewModel.fs_div">
                 <option selected>선택...</option>
-                <option value="1">개별(OFS)</option>
-                <option value="2">연결(CFS)</option>
+                <option value="OFS">개별(OFS)</option>
+                <option value="CFS">연결(CFS)</option>
             </select>
         </div>
     </div>

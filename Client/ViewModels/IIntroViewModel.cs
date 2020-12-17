@@ -6,6 +6,7 @@ namespace ForStock.Client.ViewModels
     {
         public string api_key { get; set; }
         public string stock_code { get; set; }
+        public string fs_div { get; set; }
         public string corp_code { get; set; }
         public string corp_name { get; set; }
         public string corp_name_eng { get; set; }

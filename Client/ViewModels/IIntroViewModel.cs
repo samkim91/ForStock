@@ -22,6 +22,7 @@ namespace ForStock.Client.ViewModels
         public string induty_code { get; set; }
         public string est_dt { get; set; }
         public string acc_mt { get; set; }
+        public string[] fs_div_list { get; set; }
 
         public Task UpdateOnclick();
     }

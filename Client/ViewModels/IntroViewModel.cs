@@ -8,7 +8,7 @@ namespace ForStock.Client.ViewModels
     public class IntroViewModel : IIntroViewModel
     {
         public string api_key { get; set; } = "082911aaa403b82f86c069cc8034b9ca5cd90a92";
-        public string stock_code { get; set; }
+        public string stock_code { get; set; } = "005930";
         public string fs_div { get; set; }
         public string corp_code { get; set; }
         public string corp_name { get; set; }
@@ -25,7 +25,7 @@ namespace ForStock.Client.ViewModels
         public string induty_code { get; set; }
         public string est_dt { get; set; }
         public string acc_mt { get; set; }
-
+        public string[] fs_div_list { get; set; } = { "OFS", "CFS" };
         private HttpClient _httpClient;
 
         public IntroViewModel()
@@ -39,14 +39,19 @@ namespace ForStock.Client.ViewModels
         }
 
         public async Task UpdateOnclick()
-        {   
+        {
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info와 재무제표를 가져온다.
             // parameters : stock_code, api_key, fs_div
-            CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/"+stock_code+"/"+api_key);
+            CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + stock_code + "/" + api_key + "/" + fs_div);
 
+            // Dart API로 받아온 corporation info를 viewModel에 set 해줌
             BindCorpInfoToView(corporationInfo);
-
             
+            // corporation info 와 를 indexedDB에 저장함.
+
+
+
+
             // 기업 정보를 API로 불러오는 코드 필요
             // HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, "company.json?crtfc_key="+ApiKey+"&corp_code="+CorpCode);
             // HttpClient httpClient = _httpClientFactory.CreateClient("DartAPI");
@@ -57,8 +62,8 @@ namespace ForStock.Client.ViewModels
             // 결국... 서버를 통해서 정보를 가져오는게 가장 좋다 ... 쑤까불럇
         }
 
-        private void BindCorpInfoToView(CorporationInfo corporationInfo){
-            // Dart API로 받아온 corporation info를 viewModel에 set 해줌
+        private void BindCorpInfoToView(CorporationInfo corporationInfo)
+        {
             this.corp_code = corporationInfo.corp_code;
             this.corp_name = corporationInfo.corp_name;
             this.corp_name_eng = corporationInfo.corp_name_eng;

@@ -24,7 +24,6 @@ namespace ForStock.Server.Controllers
         {
             this.logger = logger;
             this._httpClient = clientFactory.CreateClient("DartAPI");
-
         }
 
         [HttpGet("info/{stock_code}/{api_key}")]

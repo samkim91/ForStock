@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hN3dY9bhtyT7zN1ctZA2Wmjv+QK1beDwzVgF3C5vu9VjfOMgFI0s00rMvJOHWKeZaCKMBny8UQ98LyiBUDb5rw==",
+  "dgSpecHash": "bk0GnYqwf6xqN6cnM7Arfow7F+bCnQIDZVvq/9I24uY93ozeeMwBmUiQp/GcmAE/gu6/BOxoyWltQlJYHzQWiA==",
   "success": true,
   "projectFilePath": "D:\\MyProjects\\ForStock\\Server\\ForStock.Server.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\kimh6\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\kimh6\\.nuget\\packages\\microsoft.jsinterop\\3.1.6\\microsoft.jsinterop.3.1.6.nupkg.sha512",
     "C:\\Users\\kimh6\\.nuget\\packages\\microsoft.jsinterop.webassembly\\3.2.1\\microsoft.jsinterop.webassembly.3.2.1.nupkg.sha512",
+    "C:\\Users\\kimh6\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\kimh6\\.nuget\\packages\\reshiru.blazor.indexeddb.framework\\1.0.1\\reshiru.blazor.indexeddb.framework.1.0.1.nupkg.sha512",
     "C:\\Users\\kimh6\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\kimh6\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",

@@ -6,7 +6,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "ForStock.Client.dll": "sha256-k7EFX8gaG\/wgOHYfy8gtuxO+eMw\/xpUgCMKn7cD2lpM=",
+      "ForStock.Client.dll": "sha256-5EvSzkeLmrOubGT37y3UvrG7BNH9mhNxhu4L4MXX4qk=",
       "System.Net.Http.Json.dll": "sha256-brS4kX7v7bK5QHvD3m28MWueZWLhM2\/Redb9wvgCLAI=",
       "System.Buffers.dll": "sha256-ZxXy75PYbzJxNfAc\/SAP1nUYm4gt1jSaOpFnBb9m85M=",
       "mscorlib.dll": "sha256-BaZPMj95+YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=",
@@ -76,7 +76,7 @@
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-czNf3btAeBW\/vvID5LAfgcsNZ+GM3ssVuPaMflcg0rs="
     },
     "pdb": {
-      "ForStock.Client.pdb": "sha256-AM8ULoAQLoSzaC0FAMIaj\/vBxC52wHm0ogqVQiVzj88=",
+      "ForStock.Client.pdb": "sha256-o02hsxQwLicN3a7xMUyDO2bRGNj0C2mXNI3t5KLBwQc=",
       "ForStock.Shared.pdb": "sha256-Cblw\/xknqt\/EUIcyjdyoNyKVdxGkmI2\/HZyJU4KmA9g="
     },
     "runtime": {

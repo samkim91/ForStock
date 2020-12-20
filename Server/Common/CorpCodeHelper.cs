@@ -5,9 +5,6 @@ using System.Linq;
 namespace ForStock.Server.Common
 {
     public static class CorpCodeHelper{
-
-        private static string CorpCode { get; set; }
-
         public static string GetCorpCode(string stockCode = null, string corpName = null)
         {
             XElement root = XElement.Load("D:\\MyProjects\\ForStock\\Server\\Common\\CORPCODE.xml");

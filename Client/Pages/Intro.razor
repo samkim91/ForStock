@@ -5,7 +5,7 @@
 <div>
     <div>
         <div>API key</div>
-        <input type="text" @bind-value="_introViewModel.api_key" class="form-control" placeholder="API key를 입력하세요.">
+        <input type="text" @bind-value="_introViewModel.crtfc_key" class="form-control" placeholder="API key를 입력하세요.">
     </div>
     <br />
     <div>
@@ -17,8 +17,8 @@
         <div>개별(OFS)/연결(CFS)</div>
         <div>
             <select class="custom-select" @bind="_introViewModel.fs_div">
-                <option selected value=_introViewModel.fs_div_list[0]>개별(OFS)</option>
-                <option value=_introViewModel.fs_div.fs_div_list[1]>연결(CFS)</option>
+                <option selected value="OFS">개별(OFS)</option>
+                <option value="CFS">연결(CFS)</option>
             </select>
         </div>
     </div>
@@ -36,59 +36,59 @@
   <tbody>
     <tr>
       <th scope="row">회사명</th>
-      <td>@_introViewModel.corp_name</td>
+      <td>@_introViewModel.corporationInfo.corp_name</td>
     </tr>
     <tr>
       <th scope="row">영문명</th>
-      <td>@_introViewModel.corp_name_eng</td>
+      <td>@_introViewModel.corporationInfo.corp_name_eng</td>
     </tr>
     <tr>
       <th scope="row">대표자명</th>
-      <td>@_introViewModel.ceo_nm</td>
+      <td>@_introViewModel.corporationInfo.ceo_nm</td>
     </tr>
     <tr>
       <th scope="row">법인구분</th>
-      <td>@_introViewModel.corp_cls</td>
+      <td>@_introViewModel.corporationInfo.corp_cls</td>
     </tr>
     <tr>
       <th scope="row">법인등록번호</th>
-      <td>@_introViewModel.jurir_no</td>
+      <td>@_introViewModel.corporationInfo.jurir_no</td>
     </tr>
     <tr>
       <th scope="row">사업자 등록번호</th>
-      <td>@_introViewModel.bizr_no</td>
+      <td>@_introViewModel.corporationInfo.bizr_no</td>
     </tr>
     <tr>
       <th scope="row">주소</th>
-      <td>@_introViewModel.adres</td>
+      <td>@_introViewModel.corporationInfo.adres</td>
     </tr>
     <tr>
       <th scope="row">홈페이지</th>
-      <td>@_introViewModel.hm_url</td>
+      <td>@_introViewModel.corporationInfo.hm_url</td>
     </tr>
     <tr>
       <th scope="row">IR홈페이지</th>
-      <td>@_introViewModel.ir_url</td>
+      <td>@_introViewModel.corporationInfo.ir_url</td>
     </tr>
     <tr>
       <th scope="row">전화번호</th>
-      <td>@_introViewModel.phn_no</td>
+      <td>@_introViewModel.corporationInfo.phn_no</td>
     </tr>
     <tr>
       <th scope="row">팩스번호</th>
-      <td>@_introViewModel.fax_no</td>
+      <td>@_introViewModel.corporationInfo.fax_no</td>
     </tr>
     <tr>
       <th scope="row">업종코드</th>
-      <td>@_introViewModel.induty_code</td>
+      <td>@_introViewModel.corporationInfo.induty_code</td>
     </tr>
     <tr>
       <th scope="row">설립일</th>
-      <td>@_introViewModel.est_dt</td>
+      <td>@_introViewModel.corporationInfo.est_dt</td>
     </tr>
     <tr>
       <th scope="row">결산월</th>
-      <td>@_introViewModel.acc_mt</td>
+      <td>@_introViewModel.corporationInfo.acc_mt</td>
     </tr>   
   </tbody>
 </table>

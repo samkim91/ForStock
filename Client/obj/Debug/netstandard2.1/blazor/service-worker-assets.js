@@ -65,7 +65,7 @@
       "url": "manifest.json"
     },
     {
-      "hash": "sha256-k7EFX8gaG\/wgOHYfy8gtuxO+eMw\/xpUgCMKn7cD2lpM=",
+      "hash": "sha256-5EvSzkeLmrOubGT37y3UvrG7BNH9mhNxhu4L4MXX4qk=",
       "url": "_framework\/_bin\/ForStock.Client.dll"
     },
     {
@@ -337,7 +337,7 @@
       "url": "_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-AM8ULoAQLoSzaC0FAMIaj\/vBxC52wHm0ogqVQiVzj88=",
+      "hash": "sha256-o02hsxQwLicN3a7xMUyDO2bRGNj0C2mXNI3t5KLBwQc=",
       "url": "_framework\/_bin\/ForStock.Client.pdb"
     },
     {
@@ -361,9 +361,9 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-6xpHFoRiw2n5Vae7LWCFTWW0aLvhp3BrHhTktehzgNE=",
+      "hash": "sha256-WBZRDQDUJHItTrvH2M4OGpypYinf+86aP5hchn00nAU=",
       "url": "_framework\/blazor.boot.json"
     }
   ],
-  "version": "A0TeWpLF"
+  "version": "k4OTQYKs"
 };

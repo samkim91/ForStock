@@ -297,7 +297,7 @@
       "url": "_framework\/_bin\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-gKv7BfnB17xSSdZQqM\/dOIncCtvbi9haJbyZU+6Vcz0=",
+      "hash": "sha256-4Zlhc9vIm4ZEKIHIKvevD273ADIyOas80wGZRhNPQmI=",
       "url": "_framework\/_bin\/ForStock.Shared.dll"
     },
     {
@@ -341,7 +341,7 @@
       "url": "_framework\/_bin\/ForStock.Client.pdb"
     },
     {
-      "hash": "sha256-Cblw\/xknqt\/EUIcyjdyoNyKVdxGkmI2\/HZyJU4KmA9g=",
+      "hash": "sha256-3zBh+7sir2XvPcEZpTbCoBDAZXFGr\/zyfwBm\/YBnwYA=",
       "url": "_framework\/_bin\/ForStock.Shared.pdb"
     },
     {
@@ -361,9 +361,9 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-WBZRDQDUJHItTrvH2M4OGpypYinf+86aP5hchn00nAU=",
+      "hash": "sha256-tOh4GRnW2nyvAC+4nsIGvTjkQ\/OyRBkPdfWFqnpj1L8=",
       "url": "_framework\/blazor.boot.json"
     }
   ],
-  "version": "k4OTQYKs"
+  "version": "DNxzZlbV"
 };

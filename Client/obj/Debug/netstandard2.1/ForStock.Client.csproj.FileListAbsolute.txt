@@ -443,8 +443,6 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bi
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\System.Diagnostics.Tracing.dll.br
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\System.Resources.ResourceManager.dll.br
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\System.Runtime.dll.br
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\gKv7BfnB17xSSdZQqM-dOIncCtvbi9haJbyZU_6Vcz0=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\Cblw-xknqt-EUIcyjdyoNyKVdxGkmI2-HZyJU4KmA9g=.hash
 D:\MyProjects\ForStock\Client\bin\Debug\netstandard2.1\wwwroot\_framework\_bin\Blazor.IndexedDB.Framework.dll
 D:\MyProjects\ForStock\Client\bin\Debug\netstandard2.1\wwwroot\_framework\_bin\TG.Blazor.IndexedDB.dll
 D:\MyProjects\ForStock\Client\bin\Debug\netstandard2.1\wwwroot\_framework\_bin\Blazor.IndexedDB.Framework.dll.gz
@@ -455,8 +453,9 @@ D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bi
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\TG.Blazor.IndexedDB.dll.gz
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\Blazor.IndexedDB.Framework.dll.br
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\compressed\_framework\_bin\TG.Blazor.IndexedDB.dll.br
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\E1HJyUErEbygcF7gizTQpoDTAO-OcXH7mEOMaqo0zJ4=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\5EvSzkeLmrOubGT37y3UvrG7BNH9mhNxhu4L4MXX4qk=.hash
 D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\o02hsxQwLicN3a7xMUyDO2bRGNj0C2mXNI3t5KLBwQc=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\WBZRDQDUJHItTrvH2M4OGpypYinf_86aP5hchn00nAU=.hash
-D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\ocV9laVDYvXEC18MfFgF3NMTAZNkl9eMzCfY9Zjz8XE=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\4Zlhc9vIm4ZEKIHIKvevD273ADIyOas80wGZRhNPQmI=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\3zBh_7sir2XvPcEZpTbCoBDAZXFGr-zyfwBm-YBnwYA=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\tOh4GRnW2nyvAC_4nsIGvTjkQ-OyRBkPdfWFqnpj1L8=.hash
+D:\MyProjects\ForStock\Client\obj\Debug\netstandard2.1\integrity\QAFFb1XvGGF7s_Yyb6yWmVQgFPhQ2vWBafu5e3m8NFY=.hash

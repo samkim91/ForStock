@@ -107,39 +107,6 @@
         }
       },
       {
-        "HashCode": -868109632,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Visualization",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Visualization"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Visualization"
-        }
-      },
-      {
-        "HashCode": -2136658456,
-        "Kind": "Components.Component",
-        "Name": "ForStock.Client.Pages.Visualization",
-        "AssemblyName": "ForStock.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ForStock.Client.Pages.Visualization"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ForStock.Client.Pages.Visualization",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 455755846,
         "Kind": "Components.Component",
         "Name": "ForStock.Client.Pages.Intro",
@@ -169,6 +136,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ForStock.Client.Pages.Intro",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -868109632,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Visualization",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Visualization"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Visualization"
+        }
+      },
+      {
+        "HashCode": -2136658456,
+        "Kind": "Components.Component",
+        "Name": "ForStock.Client.Pages.Visualization",
+        "AssemblyName": "ForStock.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ForStock.Client.Pages.Visualization"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ForStock.Client.Pages.Visualization",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

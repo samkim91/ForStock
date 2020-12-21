@@ -219,3 +219,4 @@ D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\TG.Blazor.IndexedDB.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\TG.Blazor.IndexedDb.JS.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Http.dll
 D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\MyProjects\ForStock\Server\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

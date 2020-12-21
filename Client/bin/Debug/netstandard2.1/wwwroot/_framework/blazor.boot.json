@@ -64,7 +64,7 @@
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-bSgsT2x5xMvs8mara5wU+EJwcyHa9GVMU85HwhWcdWM=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-m7Q+cF5\/ji3OMfdGlCuE8pQ\/iM+kxNHLq\/IEWVvIaOg=",
       "Microsoft.AspNetCore.Components.dll": "sha256-PEg9ghiKSWBTX0jq8pFDvv2Yvw92Y8W0ELtWrSE4fhA=",
-      "ForStock.Shared.dll": "sha256-gKv7BfnB17xSSdZQqM\/dOIncCtvbi9haJbyZU+6Vcz0=",
+      "ForStock.Shared.dll": "sha256-4Zlhc9vIm4ZEKIHIKvevD273ADIyOas80wGZRhNPQmI=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-FJ+rEgcx6ljTxwbRXZSUGfrDKpVvOxHCSfNxbnXNn3M=",
       "Microsoft.Extensions.Configuration.dll": "sha256-n0Ag7rF7ZQamklPSZkakIXkRoa6JwlmPSS0cRaAhJQM=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-2jNkt\/\/JGfoqWNB8whRdJotnsanWbH3FfxZWz0gyLTs=",
@@ -77,7 +77,7 @@
     },
     "pdb": {
       "ForStock.Client.pdb": "sha256-o02hsxQwLicN3a7xMUyDO2bRGNj0C2mXNI3t5KLBwQc=",
-      "ForStock.Shared.pdb": "sha256-Cblw\/xknqt\/EUIcyjdyoNyKVdxGkmI2\/HZyJU4KmA9g="
+      "ForStock.Shared.pdb": "sha256-3zBh+7sir2XvPcEZpTbCoBDAZXFGr\/zyfwBm\/YBnwYA="
     },
     "runtime": {
       "dotnet.3.2.0.js": "sha256-mPoqx7XczFHBWk3gRNn0hc9ekG1OvkKY4XiKRY5Mj5U=",

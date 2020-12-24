@@ -2,6 +2,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using ForStock.Shared.Model;
+using Newtonsoft.Json.Linq;
 
 namespace ForStock.Client.ViewModels
 {
@@ -27,24 +28,15 @@ namespace ForStock.Client.ViewModels
         {
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info와 재무제표를 가져온다.
             // parameters : stock_code, api_key, fs_div
-            corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + stock_code + "/" + crtfc_key + "/" + fs_div);
+            // response : corpInfo, financialStatements
+            JObject response = await _httpClient.GetFromJsonAsync<JObject>("corporation/info/" + stock_code + "/" + crtfc_key + "/" + fs_div);
+
+            
 
             // Dart API로 받아온 corporation info를 viewModel에 set 해줌
-            BindCorpInfoToView(corporationInfo);
+            // BindCorpInfoToView(corporationInfo);
             
             // corporation info 와 를 indexedDB에 저장함.
-
-
-
-
-            // 기업 정보를 API로 불러오는 코드 필요
-            // HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Get, "company.json?crtfc_key="+ApiKey+"&corp_code="+CorpCode);
-            // HttpClient httpClient = _httpClientFactory.CreateClient("DartAPI");
-
-            // HttpResponseMessage responseMessage = await httpClient.SendAsync(requestMessage);
-            // string result = await httpClient.GetFromJsonAsync<string>("company.json?crtfc_key="+ApiKey+"&corp_code="+CorpCode);
-            // TODO.. CORS 에러가 발생하고 있다.. Services에 AddCors로 해결할 수 있는 것으로 보인다.
-            // 결국... 서버를 통해서 정보를 가져오는게 가장 좋다 ... 쑤까불럇
         }
 
         private void BindCorpInfoToView(CorporationInfo corporationInfo)

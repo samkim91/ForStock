@@ -10,61 +10,52 @@ namespace ForStock.Server.Common
     {
         // 보고서 코드인데, 앞에서부터 1분기, 2분기, 3분기, 4분기 순
         public string[] reprt_codes { get; set; } = { "11013", "11012", "11014", "11011" };
+
         JArray jArray = new JArray();
+
         JObject jObject = null;
 
-        public string GetRequestQuaters()
+        public JArray GetQuartersForRequest()
         {
             int currentYear = Convert.ToInt32(DateTime.Now.Year);
-            int twoYearsAgo = Convert.ToInt32(DateTime.Now.AddYears(-2).Year);
             double currentMonth = Convert.ToInt32(DateTime.Now.Month);
-            int currentQuarter = 0;
+            int currentQuarter = Convert.ToInt32(Math.Ceiling(currentMonth / 3));
             int startQuarter = 0;
-            int leftQuater = 0;
-
-            currentQuarter = Convert.ToInt32(Math.Ceiling(currentMonth / 3));
+            int startYear = 0;
 
             if (currentQuarter == 1)
             {
                 startQuarter = 4;
+                startYear = currentYear - 1;
             }
             else
             {
                 startQuarter = currentQuarter - 1;
+                startYear = currentYear;
             }
 
-            leftQuater = 4 - startQuarter;
-
-            for (int i = startQuarter; i > 0; i--)
+            // start year
+            for (int i = startQuarter - 1; i >= 0; i--)
             {
-                // startQuarter부터 1분기씩 감소하면서 가져옴.
                 jObject = new JObject();
-                jObject.Add("Year", currentYear);
-                jObject.Add("Quarter", reprt_codes[i - 1]);
-                jArray.Add(jObject);
-                jObject = new JObject();
-                jObject.Add("Year", twoYearsAgo);
-                jObject.Add("Quarter", reprt_codes[i - 1]);
+                jObject.Add("Year", startYear);
+                jObject.Add("Quarter", reprt_codes[i]);
                 jArray.Add(jObject);
             }
 
-            for (int i = leftQuater; i > 0; i--)
-            {
-                int index = 3;
-                // leftQuater부터 1분깄힉 감소하면서 가져옴.
-                jObject = new JObject();
-                jObject.Add("Year", currentYear - 1);
-                jObject.Add("Quarter", reprt_codes[index]);
-                jArray.Add(jObject);
-                jObject = new JObject();
-                jObject.Add("Year", twoYearsAgo - 1);
-                jObject.Add("Quarter", reprt_codes[index]);
-                jArray.Add(jObject);
-
-                index--;
+            // last 4 years from start year
+            for (int j = 4; j > 0; j--) {
+                startYear--;
+                for (int i = 3; i >= 0; i--)
+                {
+                    jObject = new JObject();
+                    jObject.Add("Year", startYear);
+                    jObject.Add("Quarter", reprt_codes[i]);
+                    jArray.Add(jObject);
+                }
             }
 
-            return jArray.ToString();
+            return jArray;
         }
     }
 }

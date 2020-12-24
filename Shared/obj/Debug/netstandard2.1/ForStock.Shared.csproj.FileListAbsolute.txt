@@ -1,9 +1,0 @@
-D:\MyProjects\ForStock\Shared\bin\Debug\netstandard2.1\ForStock.Shared.deps.json
-D:\MyProjects\ForStock\Shared\bin\Debug\netstandard2.1\ForStock.Shared.dll
-D:\MyProjects\ForStock\Shared\bin\Debug\netstandard2.1\ForStock.Shared.pdb
-D:\MyProjects\ForStock\Shared\obj\Debug\netstandard2.1\ForStock.Shared.csprojAssemblyReference.cache
-D:\MyProjects\ForStock\Shared\obj\Debug\netstandard2.1\ForStock.Shared.AssemblyInfoInputs.cache
-D:\MyProjects\ForStock\Shared\obj\Debug\netstandard2.1\ForStock.Shared.AssemblyInfo.cs
-D:\MyProjects\ForStock\Shared\obj\Debug\netstandard2.1\ForStock.Shared.csproj.CoreCompileInputs.cache
-D:\MyProjects\ForStock\Shared\obj\Debug\netstandard2.1\ForStock.Shared.dll
-D:\MyProjects\ForStock\Shared\obj\Debug\netstandard2.1\ForStock.Shared.pdb

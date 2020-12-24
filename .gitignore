@@ -7,7 +7,6 @@
 **/ForStock/Server/obj/
 **/ForStock/Server/bin/
 
-
 # Ignore bin folder on Blazor Shared
 **/ForStock/Shared/obj/
 **/ForStock/Shared/bin/
@@ -15,3 +14,24 @@
 # Ignore .vscode and .vs
 **/.vscode/
 **/ForStock/.vs/
+
+
+
+
+# Ignore bin folder on Blazor Client
+Client/obj/
+Client/bin/
+
+# Ignore bin folder on Blazor Server
+Server/Properties/
+Server/obj/
+Server/bin/
+
+
+# Ignore bin folder on Blazor Shared
+Shared/obj/
+Shared/bin/
+
+# Ignore .vscode and .vs
+.vscode/
+.vs/

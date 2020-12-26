@@ -64,6 +64,8 @@ namespace ForStock.Server.Controllers
                     string responseString = await httpResponse.Content.ReadAsStringAsync();
                     responses.Add(responseString);
                 }
+                // 개발중에 req가 너무 많아서 한번만 하기 위함.. 나중에 삭제해야함..
+                break;
             }
             return new JProperty("financialStatements", responses);
         }

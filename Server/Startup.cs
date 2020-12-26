@@ -27,6 +27,7 @@ namespace ForStock.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", policy =>

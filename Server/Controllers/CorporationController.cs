@@ -39,8 +39,8 @@ namespace ForStock.Server.Controllers
                 if (httpResponse.IsSuccessStatusCode){
                     string responseString = await httpResponse.Content.ReadAsStringAsync();
                     // CorporationInfo corporationInfo = JsonSerializer.Deserialize<CorporationInfo>(responseString);
-                    response.Add(new JObject(new JProperty("corpInfo", responseString)));
-                }
+                    response.Add(new JProperty("corpInfo", responseString));
+                } 
                 response.Add(await GetFinancialStatements(corp_code, crtfc_key, fs_div));
             }catch(HttpRequestException ex){
                 throw new HttpRequestException(ex.Message);
@@ -49,7 +49,7 @@ namespace ForStock.Server.Controllers
             return response;
         }
 
-        public async Task<JObject> GetFinancialStatements(string corp_code, string crtfc_key, string fs_div){
+        public async Task<JProperty> GetFinancialStatements(string corp_code, string crtfc_key, string fs_div){
             // request를 보내야하는 year/quarter를 Helper로 만들었으니 가져와서 하나씩 request를 보내고, 그 값을 JArray에 담아서 finacialStatements라는 key로 JObject를 return한다.
             DateHelper dateHelper = new DateHelper();
             JArray jArrayForRequest = dateHelper.GetQuartersForRequest();
@@ -65,7 +65,7 @@ namespace ForStock.Server.Controllers
                     responses.Add(responseString);
                 }
             }
-            return new JObject(new JProperty("financialStatements", responses));
+            return new JProperty("financialStatements", responses);
         }
     }
 }

@@ -30,17 +30,21 @@ namespace ForStock.Client.ViewModels
             // parameters : stock_code, api_key, fs_div
             // response : corpInfo, financialStatements
             string response = await _httpClient.GetStringAsync("corporation/info/" + stock_code + "/" + crtfc_key + "/" + fs_div);
-            
-            JObject jObject = new JObject(response);
 
-            JToken corpInfoObject = jObject["corpInfo"];
-            JToken financialStatementsObject = jObject["financialStatements"];
+            JObject jObject = JObject.Parse(response);
+
+            JObject corpInfoObject = JObject.Parse(jObject["corpInfo"].ToString());
+            CorporationInfo corporationInfo = corpInfoObject.ToObject<CorporationInfo>();
+
+            BindCorpInfoToView(corporationInfo);
+
+            JArray financialStatementsArray = JArray.Parse(jObject["financialStatements"].ToString());
 
             // corporation info 와 를 indexedDB에 저장함.
-
+            
             // Dart API로 받아온 corporation info를 viewModel에 set 해줌
-            CorporationInfo corporationInfo = corpInfoObject.ToObject<CorporationInfo>();
-            BindCorpInfoToView(corporationInfo);
+            
+
 
             // financialStatements에서 필요한 값들만 모아놓는 List<FinancialStatement>를 만들어서 이를 저장하고 사용하자.
         }

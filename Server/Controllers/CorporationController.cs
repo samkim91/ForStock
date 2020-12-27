@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.IO;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
+using System.Net.Http.Json;
 
 namespace ForStock.Server.Controllers
 {

@@ -1,11 +1,29 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ForStock.Shared.Model
 {
-    
+
     public class FinacialStatement
     {
         [Key]
+        public string id { get; set; }
+        public string year { get; set; }
+        public string quarter { get; set; }
+        public string status { get; set; }
+        public string message { get; set; }
+        public List<FinancialInfo> list { get; set; } = new List<FinancialInfo>();
+
+        public FinacialStatement(){}
+        public FinacialStatement(string id, string message)
+        {
+            this.id = id;
+            this.message = message;
+        }
+    }
+
+    public class FinancialInfo
+    {
         public string corp_code { get; set; }
         public string rcept_no { get; set; }
         public string reprt_code { get; set; }
@@ -26,7 +44,5 @@ namespace ForStock.Shared.Model
         public string bfefrmtrm_nm { get; set; }
         public string bfefrmtrm_amount { get; set; }
         public string ord { get; set; }
-        public string status { get; set; }
-        public string messgae { get; set; }
     }
 }

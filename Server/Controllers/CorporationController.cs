@@ -28,47 +28,36 @@ namespace ForStock.Server.Controllers
             this._httpClient = clientFactory.CreateClient("DartAPI");
         }
 
-        [HttpGet("info/{stock_code}/{crtfc_key}/{fs_div}")]
-        public async Task<JObject> GetCorpInfo(string stock_code, string crtfc_key, string fs_div){
-            JObject response = new JObject();
+        [HttpGet("info/{crtfc_key}/{stock_code}")]
+        public async Task<string> GetCorpInfo(string crtfc_key, string stock_code)
+        {
             string corp_code = CorpCodeHelper.GetCorpCode(stock_code);
-            
-            try{
-                // Todo.. GetAsyncStream 가능한지 확인해봐야함.
-                HttpResponseMessage httpResponse = await _httpClient.GetAsync("api/company.json?crtfc_key="+crtfc_key+"&corp_code="+corp_code);
 
-                if (httpResponse.IsSuccessStatusCode){
-                    string responseString = await httpResponse.Content.ReadAsStringAsync();
-                    // CorporationInfo corporationInfo = JsonSerializer.Deserialize<CorporationInfo>(responseString);
-                    response.Add(new JProperty("corpInfo", responseString));
-                } 
-                response.Add(await GetFinancialStatements(corp_code, crtfc_key, fs_div));
-            }catch(HttpRequestException ex){
-                throw new HttpRequestException(ex.Message);
+            // Todo.. GetAsyncStream 가능한지 확인해봐야함.
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync("api/company.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code);
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                return await httpResponse.Content.ReadAsStringAsync();
             }
 
-            return response;
+            throw new HttpRequestException();
         }
 
-        public async Task<JProperty> GetFinancialStatements(string corp_code, string crtfc_key, string fs_div){
-            // request를 보내야하는 year/quarter를 Helper로 만들었으니 가져와서 하나씩 request를 보내고, 그 값을 JArray에 담아서 finacialStatements라는 key로 JObject를 return한다.
-            DateHelper dateHelper = new DateHelper();
-            JArray jArrayForRequest = dateHelper.GetQuartersForRequest();
-            JArray responses = new JArray();
+        [HttpGet("financialstatement/{crtfc_key}/{stock_code}/{bsns_year}/{reprt_code}/{fs_div}")]
+        public async Task<string> GetFinancialStatement(string crtfc_key, string stock_code, string bsns_year, string reprt_code, string fs_div)
+        {
+            string corp_code = CorpCodeHelper.GetCorpCode(stock_code);
 
-            foreach(JObject jObject in jArrayForRequest){
-                HttpResponseMessage httpResponse = await _httpClient
-                    .GetAsync("api/fnlttSinglAcntAll.json?crtfc_key="+crtfc_key+"&corp_code="+corp_code+"&bsns_year="+jObject.SelectToken("Year")+
-                               "&reprt_code="+jObject.SelectToken("Quarter")+"&fs_div="+fs_div);
+            HttpResponseMessage httpResponse = await _httpClient
+                    .GetAsync("api/fnlttSinglAcntAll.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code + "&bsns_year=" + bsns_year +
+                               "&reprt_code=" + reprt_code + "&fs_div=" + fs_div);
 
-                if(httpResponse.IsSuccessStatusCode){
-                    string responseString = await httpResponse.Content.ReadAsStringAsync();
-                    responses.Add(responseString);
-                }
-                // 개발중에 req가 너무 많아서 한번만 하기 위함.. 나중에 삭제해야함..
-                break;
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                return await httpResponse.Content.ReadAsStringAsync();
             }
-            return new JProperty("financialStatements", responses);
+            throw new HttpRequestException();
         }
     }
 }

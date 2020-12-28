@@ -10,6 +10,8 @@ namespace ForStock.Client.ViewModels
         public string stock_code { get; set; }
         public string fs_div { get; set; }
 
+        public string fs_view {get; set;}
+        
         public Task UpdateOnclick();
     }
 }

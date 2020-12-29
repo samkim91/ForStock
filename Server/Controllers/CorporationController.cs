@@ -29,35 +29,46 @@ namespace ForStock.Server.Controllers
         }
 
         [HttpGet("info/{crtfc_key}/{stock_code}")]
-        public async Task<string> GetCorpInfo(string crtfc_key, string stock_code)
-        {
+        public async Task<CorporationInfo> GetCorpInfo(string crtfc_key, string stock_code)
+        {   
+            // stock code를 corp_code(고유번호)로 바꿈
             string corp_code = CorpCodeHelper.GetCorpCode(stock_code);
 
-            // Todo.. GetAsyncStream 가능한지 확인해봐야함.
-            HttpResponseMessage httpResponse = await _httpClient.GetAsync("api/company.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code);
-
-            if (httpResponse.IsSuccessStatusCode)
-            {
-                return await httpResponse.Content.ReadAsStringAsync();
-            }
-
-            throw new HttpRequestException();
+            // Corporation의 infomation을 API로 요청.
+            // parameters : api_key, corp_code
+            // response : corperation infomation
+            CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("api/company.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code);
+            
+            return corporationInfo;
         }
 
-        [HttpGet("financialstatement/{crtfc_key}/{stock_code}/{bsns_year}/{reprt_code}/{fs_div}")]
-        public async Task<string> GetFinancialStatement(string crtfc_key, string stock_code, string bsns_year, string reprt_code, string fs_div)
+        [HttpGet("financialstatement/{crtfc_key}/{stock_code}/{fs_div}")]
+        public async Task<List<FinacialStatement>> GetFinancialStatement(string crtfc_key, string stock_code, string fs_div)
         {
+            // stock code를 corp_code(고유번호)로 바꿈
             string corp_code = CorpCodeHelper.GetCorpCode(stock_code);
             
-            HttpResponseMessage httpResponse = await _httpClient
-                    .GetAsync("api/fnlttSinglAcntAll.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code + "&bsns_year=" + bsns_year +
-                               "&reprt_code=" + reprt_code + "&fs_div=" + fs_div);
+            // 검색해야할 사업연도와 보고서코드를 Helper class에서 가져옴.
+            DateHelper dateHelper = new DateHelper();
+            JArray jArrayForRequest = dateHelper.GetQuartersForRequest();
+            List<FinacialStatement> finacialStatements = new List<FinacialStatement>();
 
-            if (httpResponse.IsSuccessStatusCode)
-            {
-                return await httpResponse.Content.ReadAsStringAsync();
+            // Corporation의 financial statements를 API로 요청.
+            // parameters : api_key, corp_code, bsns_year, reprt_code, fs_div
+            // response : financial statement
+            foreach(JObject jObject in jArrayForRequest){
+                string response = await _httpClient.GetStringAsync("api/fnlttSinglAcntAll.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code + "&bsns_year=" + jObject.SelectToken("Year") +
+                                         "&reprt_code=" + jObject.SelectToken("Quarter") + "&fs_div=" + fs_div);
+
+                JObject jObject1 = JObject.Parse(response);
+                FinacialStatement finacialStatement = jObject1.ToObject<FinacialStatement>();
+                finacialStatement.id = jObject.SelectToken("Year") + "/" + jObject.SelectToken("Quarter");
+                finacialStatement.year = jObject.SelectToken("Year").ToString();
+                finacialStatement.quarter = jObject.SelectToken("Quarter").ToString();
+                finacialStatements.Add(finacialStatement);
             }
-            throw new HttpRequestException();
+
+            return finacialStatements;
         }
     }
 }

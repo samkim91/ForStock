@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Threading.Tasks;
 using ForStock.Shared.Model;
 
@@ -13,5 +14,6 @@ namespace ForStock.Client.ViewModels
         public string fs_view {get; set;}
         
         public Task UpdateOnclick();
+
     }
 }

@@ -48,7 +48,7 @@ namespace ForStock.Server.Controllers
         public async Task<string> GetFinancialStatement(string crtfc_key, string stock_code, string bsns_year, string reprt_code, string fs_div)
         {
             string corp_code = CorpCodeHelper.GetCorpCode(stock_code);
-
+            
             HttpResponseMessage httpResponse = await _httpClient
                     .GetAsync("api/fnlttSinglAcntAll.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code + "&bsns_year=" + bsns_year +
                                "&reprt_code=" + reprt_code + "&fs_div=" + fs_div);

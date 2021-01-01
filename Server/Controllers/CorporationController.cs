@@ -38,7 +38,7 @@ namespace ForStock.Server.Controllers
             // parameters : api_key, corp_code
             // response : corperation infomation
             CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("api/company.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code);
-            
+
             return corporationInfo;
         }
 
@@ -57,11 +57,8 @@ namespace ForStock.Server.Controllers
             // parameters : api_key, corp_code, bsns_year, reprt_code, fs_div
             // response : financial statement
             foreach(JObject jObject in jArrayForRequest){
-                string response = await _httpClient.GetStringAsync("api/fnlttSinglAcntAll.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code + "&bsns_year=" + jObject.SelectToken("Year") +
+                FinacialStatement finacialStatement = await _httpClient.GetFromJsonAsync<FinacialStatement>("api/fnlttSinglAcntAll.json?crtfc_key=" + crtfc_key + "&corp_code=" + corp_code + "&bsns_year=" + jObject.SelectToken("Year") +
                                          "&reprt_code=" + jObject.SelectToken("Quarter") + "&fs_div=" + fs_div);
-
-                JObject jObject1 = JObject.Parse(response);
-                FinacialStatement finacialStatement = jObject1.ToObject<FinacialStatement>();
                 finacialStatement.id = jObject.SelectToken("Year") + "/" + jObject.SelectToken("Quarter");
                 finacialStatement.year = jObject.SelectToken("Year").ToString();
                 finacialStatement.quarter = jObject.SelectToken("Quarter").ToString();

@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Blazor.IndexedDB.Framework;
 using ForStock.Client.Common;
+using ForStock.Client.Models;
 using ForStock.Shared.Model;
 using Microsoft.AspNetCore.Components;
 
@@ -13,17 +14,11 @@ namespace ForStock.Client.ViewModels
     public class IntroViewModel : IIntroViewModel
     {
         public CorporationInfo corporationInfo { get; set; } = new CorporationInfo();
-        public string crtfc_key { get; set; } = "082911aaa403b82f86c069cc8034b9ca5cd90a92";
-        public string stock_code { get; set; } = "005930";
-        public string fs_div { get; set; } = "OFS";
+        public IntroModel introModel { get; set; } = new IntroModel();
         private HttpClient _httpClient;
         private IIndexedDbFactory _dbFactory;
-        public string fs_view { get; set; }
 
-        public IntroViewModel()
-        {
-
-        }
+        public IntroViewModel(){ }
 
         public IntroViewModel(HttpClient httpClient, IIndexedDbFactory dbFactory)
         {
@@ -40,22 +35,44 @@ namespace ForStock.Client.ViewModels
         //         BindCorpInfoToView(corpInfo);
         //     }
         // }
+        public async Task GetInitInfoFromDb(){
+            // DB를 확인해서 값이 있으면 초기값을 불러와서 set 해준다.
+            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
+            {   
+                if(db.IntroModel.Any()){
+                    introModel = db.IntroModel.First();
+                }
 
-        public async Task UpdateOnclick()
+                if(db.CorporationInfo.Any()){
+                    corporationInfo = db.CorporationInfo.First();
+                }
+            }
+        }
+
+        public async Task GetDataOnclick()
         {
+
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
             // parameters : api_key, stock_code, fs_div
             // response : financialstatements
-            List<FinacialStatement> finacialStatements = await _httpClient.GetFromJsonAsync<List<FinacialStatement>>("corporation/financialstatement/" + crtfc_key + "/" + stock_code + "/" + fs_div);
-
+            List<FinacialStatement> finacialStatements = await _httpClient.GetFromJsonAsync<List<FinacialStatement>>("corporation/financialstatement/"
+                                                                 + introModel.crtfc_key + "/" + introModel.stock_code + "/" + introModel.fs_div);
+            if(finacialStatements[0].status != "000"){
+                throw new System.Exception(finacialStatements[0].message);
+            }
             MakeFinancialStatementsToMyData(finacialStatements);
 
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
             // parameters : api_key, stock_code
             // response : corpInfo
-            CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + crtfc_key + "/" + stock_code);
+            CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + introModel.crtfc_key + "/" + introModel.stock_code);
+
+            if(corporationInfo.status != "000"){
+                throw new System.Exception(corporationInfo.message);
+            }
             // Dart API로 받아온 corporation info를 viewModel에 set 해줌
             BindCorpInfoToView(corporationInfo);
+            SaveIntroModelToIndexedDb(introModel);
             SaveCorpInfoToIndexedDb(corporationInfo);
 
             // corporation info 와 를 indexedDB에 저장함.
@@ -112,10 +129,21 @@ namespace ForStock.Client.ViewModels
             this.corporationInfo.acc_mt = corporationInfo.acc_mt;
         }
 
+        private async void SaveIntroModelToIndexedDb(IntroModel introModel)
+        {
+            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
+            {
+                db.IntroModel.Clear();
+                db.IntroModel.Add(introModel);
+                await db.SaveChanges();
+            }
+        }
+
         private async void SaveCorpInfoToIndexedDb(CorporationInfo corporationInfo)
         {
-            using (var db = await this._dbFactory.Create<MyIndexedDB>())
-            {
+            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
+            {   
+                db.CorporationInfo.Clear();
                 db.CorporationInfo.Add(corporationInfo);
                 await db.SaveChanges();
             }
@@ -123,8 +151,9 @@ namespace ForStock.Client.ViewModels
 
         private async void SaveFinacialStatementToIndexedDb(List<FinacialStatement> finacialStatements)
         {
-            using (var db = await this._dbFactory.Create<MyIndexedDB>())
+            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
             {   
+                db.FinacialStatement.Clear();
                 foreach(FinacialStatement finacialStatement in finacialStatements){
                     db.FinacialStatement.Add(finacialStatement);
                 }

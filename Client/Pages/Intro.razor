@@ -5,25 +5,25 @@
 <div>
     <div>
         <div>API key</div>
-        <input type="text" @bind-value="_introViewModel.crtfc_key" class="form-control" placeholder="API key를 입력하세요.">
+        <input type="text" @bind-value="_introViewModel.introModel.crtfc_key" class="form-control" placeholder="API key를 입력하세요.">
     </div>
     <br />
     <div>
         <div>주식코드</div>
-        <input type="text" @bind-value="_introViewModel.stock_code" class="form-control" placeholder="주식코드를 입력하세요.">
+        <input type="text" @bind-value="_introViewModel.introModel.stock_code" class="form-control" placeholder="주식코드를 입력하세요.">
     </div>
     <br />
     <div>
         <div>개별(OFS)/연결(CFS)</div>
         <div>
-            <select class="custom-select" @bind="_introViewModel.fs_div">
+            <select class="custom-select" @bind="_introViewModel.introModel.fs_div">
                 <option selected value="OFS">개별(OFS)</option>
                 <option value="CFS">연결(CFS)</option>
             </select>
         </div>
     </div>
     <br />
-    <button class="btn btn-primary" @onclick="_introViewModel.UpdateOnclick">Update</button>
+    <button class="btn btn-primary" @onclick="_introViewModel.GetDataOnclick">Get Data</button>
 </div>
     <br />
 <table class="table table-hover">
@@ -92,3 +92,13 @@
     </tr>   
   </tbody>
 </table>
+
+@code{
+
+  protected override async Task OnInitializedAsync(){
+    await _introViewModel.GetInitInfoFromDb();
+
+    await base.OnInitializedAsync();
+  }
+
+}

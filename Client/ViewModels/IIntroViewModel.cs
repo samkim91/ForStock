@@ -9,6 +9,8 @@ namespace ForStock.Client.ViewModels
     {
         public CorporationInfo corporationInfo { get; set; }
         public IntroModel introModel { get; set; }
+        public bool IsRequestSuccessful { get; set; }
+        public string Message { get; set; }
         public Task GetInitInfoFromDb();
         public Task GetDataOnclick();
     }

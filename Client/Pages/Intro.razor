@@ -93,7 +93,16 @@
   </tbody>
 </table>
 
+@if(!_introViewModel.IsRequestSuccessful){
+  ModalParameters parameters = new ModalParameters();
+  parameters.Add("Message", _introViewModel.Message);
+
+  Modal.Show<FailedRequest>("Failed to request data", parameters);
+  _introViewModel.IsRequestSuccessful = true;
+}
+
 @code{
+  [CascadingParameter] public IModalService Modal { get; set; }
 
   protected override async Task OnInitializedAsync(){
     await _introViewModel.GetInitInfoFromDb();

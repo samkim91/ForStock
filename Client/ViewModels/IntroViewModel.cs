@@ -17,6 +17,8 @@ namespace ForStock.Client.ViewModels
         public IntroModel introModel { get; set; } = new IntroModel();
         private HttpClient _httpClient;
         private IIndexedDbFactory _dbFactory;
+        public bool IsRequestSuccessful { get; set; } = true;
+        public string Message { get; set; }
 
         public IntroViewModel(){ }
 
@@ -57,25 +59,32 @@ namespace ForStock.Client.ViewModels
             // response : financialstatements
             List<FinacialStatement> finacialStatements = await _httpClient.GetFromJsonAsync<List<FinacialStatement>>("corporation/financialstatement/"
                                                                  + introModel.crtfc_key + "/" + introModel.stock_code + "/" + introModel.fs_div);
-            if(finacialStatements[0].status != "000"){
-                throw new System.Exception(finacialStatements[0].message);
-            }
-            MakeFinancialStatementsToMyData(finacialStatements);
 
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
             // parameters : api_key, stock_code
             // response : corpInfo
             CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + introModel.crtfc_key + "/" + introModel.stock_code);
 
-            if(corporationInfo.status != "000"){
-                throw new System.Exception(corporationInfo.message);
+            // Http response에 대한 검증을 함.
+            if(finacialStatements[0].status != "000" || corporationInfo.status != "000"){
+                IsRequestSuccessful = false;
+
+                if(finacialStatements[0].status != "000"){
+                    Message = "Message from Financial statement : " + finacialStatements[0].message;
+                }else{
+                    Message = "Message from Corporation info : " + corporationInfo.message;
+                }
+
+                return;
             }
-            // Dart API로 받아온 corporation info를 viewModel에 set 해줌
+            
+            // Dart API로 받아온 financial statements를 필요한 data로 변환해서 정리함.
+            MakeFinancialStatementsToMyData(finacialStatements);
+            // Dart API로 받아온 corporation info를 viewModel에 set함.
             BindCorpInfoToView(corporationInfo);
+            // Data들을 indexed db에 저장.
             SaveIntroModelToIndexedDb(introModel);
             SaveCorpInfoToIndexedDb(corporationInfo);
-
-            // corporation info 와 를 indexedDB에 저장함.
         }
 
         private void MakeFinancialStatementsToMyData(List<FinacialStatement> finacialStatements)

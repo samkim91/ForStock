@@ -28,15 +28,6 @@ namespace ForStock.Client.ViewModels
             _dbFactory = dbFactory;
         }
         
-        // OnInitialized를 viewModel에서 사용할 수 있는 방법을 찾아야함.
-        // protected override async void OnInitialized()
-        // {   
-        //     using (var db = await this._dbFactory.Create<MyIndexedDB>())
-        //     {
-        //         var corpInfo = db.CorporationInfo.First();
-        //         BindCorpInfoToView(corpInfo);
-        //     }
-        // }
         public async Task GetInitInfoFromDb(){
             // DB를 확인해서 값이 있으면 초기값을 불러와서 set 해준다.
             using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
@@ -66,12 +57,16 @@ namespace ForStock.Client.ViewModels
             CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + introModel.crtfc_key + "/" + introModel.stock_code);
 
             // Http response에 대한 검증을 함.
-            if(finacialStatements[0].status != "000" || corporationInfo.status != "000"){
+            if (!finacialStatements.Any(fs => fs.message == "정상") || corporationInfo.message != "정상")
+            {
                 IsRequestSuccessful = false;
 
-                if(finacialStatements[0].status != "000"){
-                    Message = "Message from Financial statement : " + finacialStatements[0].message;
-                }else{
+                if (!finacialStatements.Any(fs => fs.message == "정상"))
+                {
+                    Message = "Message from Financial statement : " + finacialStatements.FirstOrDefault(fs => fs.message != "정상").message;
+                }
+                else if(corporationInfo.message != "정상")
+                {
                     Message = "Message from Corporation info : " + corporationInfo.message;
                 }
 

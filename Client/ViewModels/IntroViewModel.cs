@@ -7,7 +7,6 @@ using Blazor.IndexedDB.Framework;
 using ForStock.Client.Common;
 using ForStock.Client.Models;
 using ForStock.Shared.Model;
-using Microsoft.AspNetCore.Components;
 
 namespace ForStock.Client.ViewModels
 {
@@ -15,8 +14,8 @@ namespace ForStock.Client.ViewModels
     {
         public CorporationInfo corporationInfo { get; set; } = new CorporationInfo();
         public IntroModel introModel { get; set; } = new IntroModel();
-        private HttpClient _httpClient;
-        private IIndexedDbFactory _dbFactory;
+        private HttpClient _httpClient { get; set; }
+        private IIndexedDbFactory _dbFactory { get; set; }
         public bool IsRequestSuccessful { get; set; } = true;
         public string Message { get; set; }
 
@@ -48,7 +47,7 @@ namespace ForStock.Client.ViewModels
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
             // parameters : api_key, stock_code, fs_div
             // response : financialstatements
-            List<FinacialStatement> finacialStatements = await _httpClient.GetFromJsonAsync<List<FinacialStatement>>("corporation/financialstatement/"
+            List<FinancialStatement> FinancialStatements = await _httpClient.GetFromJsonAsync<List<FinancialStatement>>("corporation/financialstatement/"
                                                                  + introModel.crtfc_key + "/" + introModel.stock_code + "/" + introModel.fs_div);
 
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
@@ -57,13 +56,13 @@ namespace ForStock.Client.ViewModels
             CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + introModel.crtfc_key + "/" + introModel.stock_code);
 
             // Http response에 대한 검증을 함.
-            if (!finacialStatements.Any(fs => fs.message == "정상") || corporationInfo.message != "정상")
+            if (!FinancialStatements.Any(fs => fs.message == "정상") || corporationInfo.message != "정상")
             {
                 IsRequestSuccessful = false;
 
-                if (!finacialStatements.Any(fs => fs.message == "정상"))
+                if (!FinancialStatements.Any(fs => fs.message == "정상"))
                 {
-                    Message = "Message from Financial statement : " + finacialStatements.FirstOrDefault(fs => fs.message != "정상").message;
+                    Message = "Message from Financial statement : " + FinancialStatements.FirstOrDefault(fs => fs.message != "정상").message;
                 }
                 else if(corporationInfo.message != "정상")
                 {
@@ -74,7 +73,7 @@ namespace ForStock.Client.ViewModels
             }
             
             // Dart API로 받아온 financial statements를 필요한 data로 변환해서 정리함.
-            MakeFinancialStatementsToMyData(finacialStatements);
+            MakeFinancialStatementsToMyData(FinancialStatements);
             // Dart API로 받아온 corporation info를 viewModel에 set함.
             BindCorpInfoToView(corporationInfo);
             // Data들을 indexed db에 저장.
@@ -82,35 +81,35 @@ namespace ForStock.Client.ViewModels
             SaveCorpInfoToIndexedDb(corporationInfo);
         }
 
-        private void MakeFinancialStatementsToMyData(List<FinacialStatement> finacialStatements)
+        private void MakeFinancialStatementsToMyData(List<FinancialStatement> FinancialStatements)
         {
-            List<FinacialStatement> finacialStatementsForSaving = new List<FinacialStatement>();
-            // finacialStatements에서 visualization을 위해 필요한 data를 뽑는다.
-            FinacialStatement revenue = new FinacialStatement("revenue", "매출액");
-            FinacialStatement grossProfit = new FinacialStatement("grossProfit", "매출총이익");
-            FinacialStatement operatingIncomeLoss = new FinacialStatement("operatingIncomeLoss", "영업이익");
-            FinacialStatement profitLoss = new FinacialStatement("profitLoss", "당기순이익(손실)");
-            FinacialStatement costOfSales = new FinacialStatement("costOfSales", "매출원가");
-            FinacialStatement sellingAndAdminExpenses = new FinacialStatement("sellingAndAdminExpenses", "판매비와관리비");
+            List<FinancialStatement> FinancialStatementsForSaving = new List<FinancialStatement>();
+            // FinancialStatements에서 visualization을 위해 필요한 data를 뽑는다.
+            FinancialStatement revenue = new FinancialStatement("revenue", "매출액");
+            FinancialStatement grossProfit = new FinancialStatement("grossProfit", "매출총이익");
+            FinancialStatement operatingIncomeLoss = new FinancialStatement("operatingIncomeLoss", "영업이익");
+            FinancialStatement profitLoss = new FinancialStatement("profitLoss", "당기순이익(손실)");
+            FinancialStatement costOfSales = new FinancialStatement("costOfSales", "매출원가");
+            FinancialStatement sellingAndAdminExpenses = new FinancialStatement("sellingAndAdminExpenses", "판매비와관리비");
 
-            foreach (FinacialStatement finacialStatement in finacialStatements)
+            foreach (FinancialStatement FinancialStatement in FinancialStatements)
             {
-                revenue.list.Add(finacialStatement.list.Find(key => key.account_nm == "수익(매출액)"));
-                grossProfit.list.Add(finacialStatement.list.Find(key => key.account_nm == "매출총이익"));
-                operatingIncomeLoss.list.Add(finacialStatement.list.Find(key => key.account_nm == "영업이익" || key.account_nm == "영업이익(손실)"));
-                profitLoss.list.Add(finacialStatement.list.Find(key => key.account_nm == "당기순이익(손실)"));
-                costOfSales.list.Add(finacialStatement.list.Find(key => key.account_nm == "매출원가"));
-                sellingAndAdminExpenses.list.Add(finacialStatement.list.Find(key => key.account_nm == "판매비와관리비"));
+                revenue.list.Add(FinancialStatement.list.Find(key => key.account_nm == "수익(매출액)"));
+                grossProfit.list.Add(FinancialStatement.list.Find(key => key.account_nm == "매출총이익"));
+                operatingIncomeLoss.list.Add(FinancialStatement.list.Find(key => key.account_nm == "영업이익" || key.account_nm == "영업이익(손실)"));
+                profitLoss.list.Add(FinancialStatement.list.Find(key => key.account_nm == "당기순이익(손실)"));
+                costOfSales.list.Add(FinancialStatement.list.Find(key => key.account_nm == "매출원가"));
+                sellingAndAdminExpenses.list.Add(FinancialStatement.list.Find(key => key.account_nm == "판매비와관리비"));
             }
             
-            finacialStatementsForSaving.Add(revenue);
-            finacialStatementsForSaving.Add(grossProfit);
-            finacialStatementsForSaving.Add(operatingIncomeLoss);
-            finacialStatementsForSaving.Add(profitLoss);
-            finacialStatementsForSaving.Add(costOfSales);
-            finacialStatementsForSaving.Add(sellingAndAdminExpenses);
+            FinancialStatementsForSaving.Add(revenue);
+            FinancialStatementsForSaving.Add(grossProfit);
+            FinancialStatementsForSaving.Add(operatingIncomeLoss);
+            FinancialStatementsForSaving.Add(profitLoss);
+            FinancialStatementsForSaving.Add(costOfSales);
+            FinancialStatementsForSaving.Add(sellingAndAdminExpenses);
             
-            SaveFinacialStatementToIndexedDb(finacialStatementsForSaving);
+            SaveFinancialStatementToIndexedDb(FinancialStatementsForSaving);
         }
 
         private void BindCorpInfoToView(CorporationInfo corporationInfo)
@@ -153,13 +152,13 @@ namespace ForStock.Client.ViewModels
             }
         }
 
-        private async void SaveFinacialStatementToIndexedDb(List<FinacialStatement> finacialStatements)
+        private async void SaveFinancialStatementToIndexedDb(List<FinancialStatement> FinancialStatements)
         {
             using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
             {   
-                db.FinacialStatement.Clear();
-                foreach(FinacialStatement finacialStatement in finacialStatements){
-                    db.FinacialStatement.Add(finacialStatement);
+                db.FinancialStatement.Clear();
+                foreach(FinancialStatement FinancialStatement in FinancialStatements){
+                    db.FinancialStatement.Add(FinancialStatement);
                 }
                 await db.SaveChanges();
             }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace ForStock.Shared.Model
 {
 
-    public class FinacialStatement
+    public class FinancialStatement
     {
         [Key]
         public string id { get; set; }
@@ -14,8 +14,8 @@ namespace ForStock.Shared.Model
         public string message { get; set; }
         public List<FinancialInfo> list { get; set; } = new List<FinancialInfo>();
 
-        public FinacialStatement(){}
-        public FinacialStatement(string id, string message)
+        public FinancialStatement(){}
+        public FinancialStatement(string id, string message)
         {
             this.id = id;
             this.message = message;

@@ -11,6 +11,6 @@ namespace ForStock.Client.Common
         public MyIndexedDB(IJSRuntime jSRuntime, string name, int version) : base(jSRuntime, name, version) { }
         public IndexedSet<IntroModel> IntroModel { get; set; }
         public IndexedSet<CorporationInfo> CorporationInfo { get; set; }
-        public IndexedSet<FinacialStatement> FinacialStatement { get; set; }
+        public IndexedSet<FinancialStatement> FinancialStatement { get; set; }
     }
 }

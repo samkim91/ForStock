@@ -8,10 +8,11 @@ using ForStock.Shared.Model;
 
 namespace ForStock.Client.ViewModels
 {
-    public class VisualizationViewModel
+    public class VisualizationViewModel : IVisualizationViewModel
     {
         private IIndexedDbFactory _dbFactory { get; set; }
-        private List<FinancialStatement> FinancialStatements { get; set; }
+        public List<FinancialStatement> FinancialStatements { get; set; }
+        public ChartData dataForRevenue {get; set;}
         public VisualizationViewModel() { }
         public VisualizationViewModel(IIndexedDbFactory dbFactory)
         {
@@ -23,10 +24,11 @@ namespace ForStock.Client.ViewModels
             // indexed DB에서 데이터를 받아온다.
             using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
             {
-                if (db.FinancialStatement.Any())
+                if (!db.FinancialStatement.Any())
                 {
-                    FinancialStatements = (List<FinancialStatement>)db.FinancialStatement.Select(row => row);
+                    return;
                 }
+                FinancialStatements = (List<FinancialStatement>)db.FinancialStatement.Select(row => row);
             }
             // 받아온 데이터를 각각의 분류(message field)에 따라서 필요한 데이터를 빼온다.
             MakeUsefulData();

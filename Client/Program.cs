@@ -20,6 +20,7 @@ namespace ForStock.Client
             builder.Services.AddSingleton<IIndexedDbFactory, IndexedDbFactory>();
             builder.Services.AddHttpClient<IIntroViewModel, IntroViewModel>
                 ("ServerAPI", Client => Client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
+            builder.Services.AddSingleton<IVisualizationViewModel, VisualizationViewModel>();
             builder.Services.AddBlazoredModal();
 
             await builder.Build().RunAsync();

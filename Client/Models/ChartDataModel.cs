@@ -9,8 +9,9 @@ namespace ForStock.Client.Models
         private List<string> years;
         private List<string> quarters;
         private List<string> yearsAndQuarters;
-        public List<string> amounts { get; set; }
+        private List<string> amounts { get; set; }
         List<ChartDataModel> _chartDataModels { get; set; } = new List<ChartDataModel>();
+        public ChartData() { }
         public ChartData(List<ChartDataModel> chartDataModels)
         {
             _chartDataModels = chartDataModels;

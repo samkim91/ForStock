@@ -19,10 +19,9 @@
     public string[] Data { get; set; }
 
     [Parameter]
-    public string[] BackgroundColor { get; set; }
-
-    [Parameter]
     public string[] Labels { get; set; }
+
+    public string[] BackgroundColor { get; set; } = new string [] {"#30A9DE", "#EFDC05", "#E53A40", "#566270"};
 
     protected override async Task OnAfterRenderAsync(bool firstRender) 
     {

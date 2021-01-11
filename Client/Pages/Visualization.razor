@@ -1,20 +1,16 @@
 @page "/visualization"
 @using ForStock.Shared
+@using ForStock.Client.ViewModels
 @inject HttpClient Http
+@inject IVisualizationViewModel _visualizationViewModel
 
 
-@if (1 != 1)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-  <Chart Id="revenueQuarters" Type="@Chart.ChartType.Bar" ></Chart>
-}
+<Chart Id="revenueQuarters" Type="@Chart.ChartType.Bar" Data="@_visualizationViewModel.dataForRevenue.Amounts.ToArray()" Labels="@_visualizationViewModel.dataForRevenue.YearsAndQuarters.ToArray()"></Chart>
 
 @code{
   protected override async Task OnInitializedAsync(){
-    
+    await _visualizationViewModel.Init();
+
     await base.OnInitializedAsync();
   }
 

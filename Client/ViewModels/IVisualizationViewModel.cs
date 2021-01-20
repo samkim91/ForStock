@@ -15,5 +15,7 @@ namespace ForStock.Client.ViewModels
         public ChartData dataForRevenue { get; set; }
 
         public Task Init();
+
+        public void onLoadClick();
     }
 }

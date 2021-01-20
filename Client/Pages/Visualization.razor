@@ -1,17 +1,21 @@
 @page "/visualization"
-@using ForStock.Shared
 @using ForStock.Client.ViewModels
-@inject HttpClient Http
 @inject IVisualizationViewModel _visualizationViewModel
 
 
-<Chart Id="revenueQuarters" Type="@Chart.ChartType.Bar" Data="@_visualizationViewModel.dataForRevenue.Amounts.ToArray()" Labels="@_visualizationViewModel.dataForRevenue.YearsAndQuarters.ToArray()"></Chart>
+@* model이 set되지 않았는데 부르려다보니까 error가 계속 터졌던 것임. Not an object... load가 끝나면, 또는 null이 아니면 실행되게끔 변경해야함. *@
+@* <Chart Id="revenueQuarters" Type="@Chart.ChartType.Bar"
+  Data="_visualizationViewModel.dataForRevenue.Amounts.ToArray()"
+  Labels="_visualizationViewModel.dataForRevenue.YearsAndQuarters.ToArray()"></Chart> *@
+
+
+<button @onclick="_visualizationViewModel.onLoadClick">Load</button>
 
 @code{
-  protected override async Task OnInitializedAsync(){
+  protected override async Task OnInitializedAsync()
+  {
     await _visualizationViewModel.Init();
 
     await base.OnInitializedAsync();
   }
-
 }

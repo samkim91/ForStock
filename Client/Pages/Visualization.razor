@@ -4,12 +4,13 @@
 
 
 @* model이 set되지 않았는데 부르려다보니까 error가 계속 터졌던 것임. Not an object... load가 끝나면, 또는 null이 아니면 실행되게끔 변경해야함. *@
-@* <Chart Id="revenueQuarters" Type="@Chart.ChartType.Bar"
-  Data="_visualizationViewModel.dataForRevenue.Amounts.ToArray()"
-  Labels="_visualizationViewModel.dataForRevenue.YearsAndQuarters.ToArray()"></Chart> *@
+@if(_visualizationViewModel.dataForRevenue.Amounts != null){
+  <Chart Id="revenueQuarters" Type="@Chart.ChartType.Bar"
+  Data="_visualizationViewModel.dataForRevenue.Amounts"
+  Labels="_visualizationViewModel.dataForRevenue.YearsAndQuarters"></Chart>
+}
 
-
-<button @onclick="_visualizationViewModel.onLoadClick">Load</button>
+@* <button @onclick="_visualizationViewModel.onLoadClick">Load</button> *@
 
 @code{
   protected override async Task OnInitializedAsync()

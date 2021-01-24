@@ -16,15 +16,17 @@
     public ChartType Type { get; set; }
 
     [Parameter]
-    public string[] Data { get; set; }
+    public List<string> Data { get; set; } = new List<string>();
 
     [Parameter]
-    public string[] Labels { get; set; }
+    public List<string> Labels { get; set; } = new List<string>();
 
-    public string[] BackgroundColor { get; set; } = new string [] {"#30A9DE", "#EFDC05", "#E53A40", "#566270"};
+    public List<string> BackgroundColor { get; set; } = new List<string>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender) 
     {
+        SetBackGroundColors();
+
         //Here we create an anonymous type with all the options that need to be sent to Chart.js
         var config = new
         {
@@ -53,5 +55,19 @@
         };
 
         await JSRuntime.InvokeVoidAsync("setup", Id, config);
+    }
+
+    public void SetBackGroundColors(){
+        foreach(string label in Labels){
+            if(label.Contains("Q1")){
+                BackgroundColor.Add("#30A9DE");
+            }else if(label.Contains("Q2")){
+                BackgroundColor.Add("#EFDC05");
+            }else if(label.Contains("Q3")){
+                BackgroundColor.Add("#566270");
+            }else{
+                BackgroundColor.Add("#E53A40");
+            }
+        }
     }
 }

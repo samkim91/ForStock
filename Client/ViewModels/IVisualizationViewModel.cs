@@ -16,6 +16,6 @@ namespace ForStock.Client.ViewModels
 
         public Task Init();
 
-        public void onLoadClick();
+        // public void onLoadClick();
     }
 }

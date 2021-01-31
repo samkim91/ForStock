@@ -13,6 +13,9 @@
     public string Id { get; set; }
 
     [Parameter]
+    public string Label { get; set; } = "";
+
+    [Parameter]
     public ChartType Type { get; set; }
 
     [Parameter]
@@ -42,13 +45,17 @@
                             BeginAtZero = true
                         } }
                     }
+                },
+                Legend = new
+                {
+                    Display = false
                 }
             },
             Data = new
             {
                 Datasets = new[]
                 {
-                    new { Data = Data, BackgroundColor = BackgroundColor}
+                    new { Data = Data, BackgroundColor = BackgroundColor, Label = Label}
                 },
                 Labels = Labels
             }

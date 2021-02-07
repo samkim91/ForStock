@@ -13,8 +13,14 @@ namespace ForStock.Client.ViewModels
     public class VisualizationViewModel : IVisualizationViewModel
     {
         private IIndexedDbFactory _dbFactory { get; set; }
-        public List<FinancialStatement> FinancialStatements { get; set; } = new List<FinancialStatement>();
-        public ChartData dataForRevenue { get; set; } = new ChartData();
+        public List<ChartDataModel> ChartDataModels { get; set; } = new List<ChartDataModel>();
+        public ChartDataModel Revenue { get; set; } = new ChartDataModel();
+        public ChartDataModel GrossProfit { get; set; } = new ChartDataModel();
+        public ChartDataModel OperatingIncomeLoss { get; set; } = new ChartDataModel();
+        public ChartDataModel ProfitLoss { get; set; } = new ChartDataModel();
+        public ChartDataModel CostOfSales { get; set; } = new ChartDataModel();
+        public ChartDataModel SellingAndAdminExpenses { get; set; } = new ChartDataModel();
+
         public VisualizationViewModel() { }
         public VisualizationViewModel(IIndexedDbFactory dbFactory)
         {
@@ -28,37 +34,41 @@ namespace ForStock.Client.ViewModels
 
             using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
             {
-                if (!db.FinancialStatement.Any())
+                if (!db.ChartDataModel.Any())
                 {
                     return;
                 }
-                FinancialStatements = db.FinancialStatement.Select(row => row).ToList<FinancialStatement>();
+                ChartDataModels = db.ChartDataModel.Select(row => row).ToList<ChartDataModel>();
             }
             // 받아온 데이터를 각각의 분류(message field)에 따라서 필요한 데이터를 빼온다.
-            MakeUsefulData();
+            getEachData();
         }
 
-        public void MakeUsefulData()
+        public void getEachData()
         {
-            // 필요한 데이터를 연간OO, 분기OO 등으로 정리한다.
-            FinancialStatement revenue = FinancialStatements.Single(fs => fs.id == "revenue");
+            // 매출액 revenue
+            Revenue = ChartDataModels.Single(c => c.Id == "revenue");
+            Revenue.DataSets.Reverse();
 
-            List<ChartDataModel> revenues =
-                (from fi in revenue.list
-                 where fi != null
-                 select new ChartDataModel() { Year = fi.bsns_year, Quarter = fi.reprt_code, Amount = fi.thstrm_amount }).ToList();
+            // 매출 총이익 grossProfit
+            GrossProfit = ChartDataModels.Single(c => c.Id == "grossProfit");
+            GrossProfit.DataSets.Reverse();
 
-            // 4분기 보고서의 매출액은 연간 매출액이기에, 각 분기의 매출액을 빼서 4분기 매출액을 구한다.
-            for (int i = 0; i < revenues.Count(); i++)
-            {
-                if (revenues[i].Quarter == "11011")
-                {
-                    if(revenues[i+1].Amount != null && revenues[i+2].Amount  != null && revenues[i+3].Amount != null){
-                        revenues[i].Amount = (Convert.ToInt64(revenues[i].Amount) - Convert.ToInt64(revenues[i + 1].Amount) - Convert.ToInt64(revenues[i + 2].Amount) - Convert.ToInt64(revenues[i + 3].Amount)).ToString();
-                    }
-                }
-            }
-            this.dataForRevenue = new ChartData(revenues);
+            // 영업이익 operatingIncomeLoss
+            OperatingIncomeLoss = ChartDataModels.Single(c => c.Id == "operatingIncomeLoss");
+            OperatingIncomeLoss.DataSets.Reverse();
+
+            // 매출 원가 costOfSales
+            CostOfSales = ChartDataModels.Single(c => c.Id == "costOfSales");
+            CostOfSales.DataSets.Reverse();
+
+            // 당기 순이익(손실) profitLoss
+            ProfitLoss = ChartDataModels.Single(c => c.Id == "profitLoss");
+            ProfitLoss.DataSets.Reverse();
+
+            // 판매비와 관리비 sellingAndAdminExpenses
+            SellingAndAdminExpenses = ChartDataModels.Single(c => c.Id == "sellingAndAdminExpenses");
+            SellingAndAdminExpenses.DataSets.Reverse();
         }
     }
 }

@@ -12,5 +12,6 @@ namespace ForStock.Client.Common
         public IndexedSet<IntroModel> IntroModel { get; set; }
         public IndexedSet<CorporationInfo> CorporationInfo { get; set; }
         public IndexedSet<FinancialStatement> FinancialStatement { get; set; }
+        public IndexedSet<ChartDataModel> ChartDataModel { get; set; }
     }
 }

@@ -1,16 +1,42 @@
 @page "/visualization"
 @using ForStock.Client.ViewModels
 @inject IVisualizationViewModel _visualizationViewModel
-
-
 @* model이 set되지 않았는데 부르려다보니까 error가 계속 터졌던 것임. Not an object... load가 끝나면, 또는 null이 아니면 실행되게끔 변경해야함. *@
-@if(_visualizationViewModel.dataForRevenue.Amounts != null){
-  <h4>수익(매출액)</h4>
-  <Chart Id="revenueQuarters" Type="@Chart.ChartType.Bar"
-  Label="수익(매출액)"
-  Data="_visualizationViewModel.dataForRevenue.Amounts"
-  Labels="_visualizationViewModel.dataForRevenue.YearsAndQuarters"></Chart>
-}
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      @if (@_visualizationViewModel.Revenue.DataSets != null)
+      {
+        <h4>@_visualizationViewModel.Revenue.Message</h4>
+        <Chart Id="revenueQuarterly" Type="@Chart.ChartType.Bar" Labels="@_visualizationViewModel.Revenue.YearAndQuarters"
+          ChartParameter="@_visualizationViewModel.Revenue.ChartParameter">
+        </Chart>
+      }
+    </div>
+    <div class="col-sm">
+      @if (@_visualizationViewModel.Revenue.DataSets != null)
+      {
+        <h4>@_visualizationViewModel.Revenue.Message</h4>
+        <Chart Id="revenueQuarterly1" Type="@Chart.ChartType.Bar" Label="@_visualizationViewModel.Revenue.Message"
+          Data="@_visualizationViewModel.Revenue.Amounts" Labels="@_visualizationViewModel.Revenue.YearAndQuarters">
+        </Chart>
+      }
+    </div>
+    <div class="col-sm">
+      @if (@_visualizationViewModel.Revenue.DataSets != null)
+      {
+        <h4>@_visualizationViewModel.Revenue.Message</h4>
+        <Chart Id="revenueQuarterly2" Type="@Chart.ChartType.Bar" Label="@_visualizationViewModel.Revenue.Message"
+          Data="@_visualizationViewModel.Revenue.Amounts" Labels="@_visualizationViewModel.Revenue.YearAndQuarters">
+        </Chart>
+      }
+    </div>
+  </div>
+
+</div>
+
+
+
 
 @* <button @onclick="_visualizationViewModel.onLoadClick">Load</button> *@
 
@@ -20,5 +46,6 @@
     await _visualizationViewModel.Init();
 
     await base.OnInitializedAsync();
+
   }
 }

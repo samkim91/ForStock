@@ -1,3 +1,4 @@
+@using Models
 @inject IJSRuntime JSRuntime
 
 <canvas id="@Id"></canvas>
@@ -13,18 +14,35 @@
     public string Id { get; set; }
 
     [Parameter]
-    public string Label { get; set; } = "";
-
-    [Parameter]
     public ChartType Type { get; set; }
 
     [Parameter]
-    public List<string> Data { get; set; } = new List<string>();
+    public List<string> Labels { get; set; } = new List<string>();
+    
+    [Parameter]
+    public ChartParameter ChartParameter { get; set; } = new ChartParameter();
 
     [Parameter]
-    public List<string> Labels { get; set; } = new List<string>();
-
+    public string Label { get; set; }
+    [Parameter]
+    public List<string> Data { get; set; } = new List<string>();
     public List<string> BackgroundColor { get; set; } = new List<string>();
+
+    [Parameter]
+    public bool IsMixed { get; set; } = true;
+
+    [Parameter]
+    public string LabelOfLine { get; set; }
+    [Parameter]
+    public List<string> DataOfLine { get; set; } = new List<string>();
+    public List<string> BackgroundColorOfLine { get; set; } = new List<string>();
+
+    [Parameter]
+    public string LabelOfLine2 { get; set; }
+    [Parameter]
+    public List<string> DataOfLine2 { get; set; } = new List<string>();
+    
+    public List<string> BackgroundColorOfLine2 { get; set; } = new List<string>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender) 
     {
@@ -55,7 +73,8 @@
             {
                 Datasets = new[]
                 {
-                    new { Data = Data, BackgroundColor = BackgroundColor, Label = Label}
+                    new { Data = ChartParameter.Data, Label = ChartParameter.Label, BackgroundColor = BackgroundColor, Type = "bar"},
+                    @* new { Data = Data, Label = Label, BackgroundColor = BackgroundColorOfLine, Type = "line"}, *@
                 },
                 Labels = Labels
             }
@@ -65,15 +84,23 @@
     }
 
     public void SetBackGroundColors(){
+        if(IsMixed){
+            foreach(string label in Labels){
+                BackgroundColor.Add("#6886c5");
+                BackgroundColorOfLine.Add("#B3000000");
+            }
+            return;
+        }
+
         foreach(string label in Labels){
             if(label.Contains("Q1")){
-                BackgroundColor.Add("#30A9DE");
+                BackgroundColor.Add("#ffdcdc");
             }else if(label.Contains("Q2")){
-                BackgroundColor.Add("#EFDC05");
+                BackgroundColor.Add("#ffc3c3");
             }else if(label.Contains("Q3")){
-                BackgroundColor.Add("#566270");
+                BackgroundColor.Add("#ffa9a9");
             }else{
-                BackgroundColor.Add("#E53A40");
+                BackgroundColor.Add("#ff9090");
             }
         }
     }

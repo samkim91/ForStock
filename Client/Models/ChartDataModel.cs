@@ -1,77 +1,88 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace ForStock.Client.Models
 {
-    public class ChartData
-    {
-        public List<string> Years { get; set; } = new List<string>();
-        public List<string> Quarters { get; set; } = new List<string>();
-        public List<string> YearsAndQuarters { get; set; } = new List<string>();
-        public List<string> Amounts { get; set; } = new List<string>();
-        List<ChartDataModel> _chartDataModels { get; set; } = new List<ChartDataModel>();
-        public ChartData() { }
-        public ChartData(List<ChartDataModel> chartDataModels)
-        {
-            _chartDataModels = chartDataModels;
+    public class ChartDataModel
+    {   
+        [Key]
+        public string Id { get; set; }
+        public string Message { get; set; }
+        public List<string> Amounts {
+            get{
+                return (from ds in DataSets select ds.Amount).ToList();
+            }
+            set{
 
-            MakeChartDataFromModels();
+            }
+        }
+        public List<string> YearAndQuarters{
+            get{
+                return (from ds in DataSets select ds.YearAndQuarter).ToList();
+            }
+            set{
+
+            }
         }
 
-        public void MakeChartDataFromModels()
+        public ChartParameter ChartParameter
         {
-            Years = (from cdm in _chartDataModels where cdm != null select cdm.Year).ToList();
-            Years.Reverse();
-
-            List<string> tempQuarters = (from cdm in _chartDataModels where cdm != null select cdm.Quarter).ToList();
-            tempQuarters.Reverse();
-            foreach (string temp in tempQuarters)
+            get
             {
-                if (temp != null)
-                {
-                    if (temp == "11013")
-                    {
-                        Quarters.Add("Q1");
-                    }
-                    else if (temp == "11012")
-                    {
-                        Quarters.Add("Q2");
-                    }
-                    else if (temp == "11014")
-                    {
-                        Quarters.Add("Q3");
-                    }
-                    else
-                    {
-                        Quarters.Add("Q4");
-                    }
-                }
+                return new ChartParameter(Message, Amounts);
             }
-
-            for (int i = 0; i < Years.Count(); i++)
+            set
             {
-                YearsAndQuarters.Add(Years[i] + "/" + Quarters[i]);
-            }
 
-            Amounts = (from cdm in _chartDataModels where cdm != null select cdm.Amount).ToList();
-            Amounts.Reverse();
+            }
+        }
+
+        public List<ChartDataSet> DataSets { get; set; } = new List<ChartDataSet>();
+        
+        public ChartDataModel()
+        {
+        }
+        
+        public ChartDataModel(string id, string message){
+            Id = id;
+            Message = message;
         }
     }
 
-    public class ChartDataModel
+    public class ChartDataSet
     {
         public string Year { get; set; }
         public string Quarter { get; set; }
         public string Amount { get; set; }
+        public string YearAndQuarter { get; set; }
 
-        public ChartDataModel() { }
+        public ChartDataSet() { }
 
-        public ChartDataModel(string year, string quarter, string amount)
+        public ChartDataSet(string year, string businessCode, string amount)
         {
             Year = year;
-            Quarter = quarter;
+            Quarter = getQuarterFromBusinessCode(businessCode);
             Amount = amount;
+            YearAndQuarter = Year + "/" + Quarter;
+        }
+
+        public string getQuarterFromBusinessCode(string businessCode)
+        {
+            switch (businessCode)
+            {
+                case "11013":
+                    return "Q1";
+                case "11012":
+                    return "Q2";
+                case "11014":
+                    return "Q3";
+                case "11011":
+                    return "Q4";
+                default:
+                    return "error";
+            }
         }
     }
 }

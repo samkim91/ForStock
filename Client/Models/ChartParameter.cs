@@ -16,4 +16,17 @@ namespace ForStock.Client.Models
             Data = amounts;
         }
     }
+
+    public class Config{
+        public string Type { get; set; }
+
+    }
+
+    public class Options{
+        public string Responsive {get;set;}
+        
+        public void setConfig(){
+            
+        }
+    }
 }

@@ -10,7 +10,9 @@
         <h4>@_visualizationViewModel.Revenue.Message</h4>
         @* 현재 ChartParameter를 이용해서 parameter를 넘길 수 있는것까지 확인했다. 다음으로, ChartParameter를 이용해서 어떻게 mixed chart를 만들 수 있는지 확인해야함. *@
         <Chart Id="revenueQuarterly" Type="@Chart.ChartType.Bar" Labels="@_visualizationViewModel.Revenue.YearAndQuarters"
-          ChartParameter="@_visualizationViewModel.Revenue.ChartParameter">
+          Label="@_visualizationViewModel.Revenue.Message" Data="@_visualizationViewModel.Revenue.Amounts"
+          Label1="@_visualizationViewModel.GrossProfit.Message" Data1="@_visualizationViewModel.GrossProfit.Amounts"
+          Label2="@_visualizationViewModel.OperatingIncomeLoss.Message" Data2="@_visualizationViewModel.OperatingIncomeLoss.Amounts">
         </Chart>
       }
     </div>
@@ -23,17 +25,7 @@
         </Chart>
       }
     </div>
-    <div class="col-sm">
-      @if (@_visualizationViewModel.Revenue.DataSets != null)
-      {
-        <h4>@_visualizationViewModel.Revenue.Message</h4>
-        <Chart Id="revenueQuarterly2" Type="@Chart.ChartType.Bar" Label="@_visualizationViewModel.Revenue.Message"
-          Data="@_visualizationViewModel.Revenue.Amounts" Labels="@_visualizationViewModel.Revenue.YearAndQuarters">
-        </Chart>
-      }
-    </div>
   </div>
-
 </div>
 
 

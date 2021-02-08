@@ -27,18 +27,6 @@ namespace ForStock.Client.Models
             }
         }
 
-        public ChartParameter ChartParameter
-        {
-            get
-            {
-                return new ChartParameter(Message, Amounts);
-            }
-            set
-            {
-
-            }
-        }
-
         public List<ChartDataSet> DataSets { get; set; } = new List<ChartDataSet>();
         
         public ChartDataModel()

@@ -1,4 +1,5 @@
 @using Models
+@using Newtonsoft.Json.Linq
 @inject IJSRuntime JSRuntime
 
 <canvas id="@Id"></canvas>
@@ -20,34 +21,53 @@
     public List<string> Labels { get; set; } = new List<string>();
     
     [Parameter]
-    public ChartParameter ChartParameter { get; set; } = new ChartParameter();
+    public string Label { get; set; }
 
     [Parameter]
-    public string Label { get; set; }
-    [Parameter]
     public List<string> Data { get; set; } = new List<string>();
+
     public List<string> BackgroundColor { get; set; } = new List<string>();
 
     [Parameter]
-    public bool IsMixed { get; set; } = true;
+    public string Label1 { get; set; }
 
     [Parameter]
-    public string LabelOfLine { get; set; }
-    [Parameter]
-    public List<string> DataOfLine { get; set; } = new List<string>();
-    public List<string> BackgroundColorOfLine { get; set; } = new List<string>();
+    public List<string> Data1 { get; set; } = new List<string>();
+
+    public List<string> BackgroundColor1 { get; set; } = new List<string>();
 
     [Parameter]
-    public string LabelOfLine2 { get; set; }
+    public string Label2 { get; set; }
+
     [Parameter]
-    public List<string> DataOfLine2 { get; set; } = new List<string>();
-    
-    public List<string> BackgroundColorOfLine2 { get; set; } = new List<string>();
+    public List<string> Data2 { get; set; } = new List<string>();
+
+    public List<string> BackgroundColor2 { get; set; } = new List<string>();
+
+
 
     protected override async Task OnAfterRenderAsync(bool firstRender) 
     {
         SetBackGroundColors();
 
+        JObject mConfig = new JObject();
+        mConfig.Add("Type", Type.ToString().ToLower());
+
+        JObject beginAtZero = new JObject("BeginAtZero", true);
+        JObject Ticks = new JObject("Ticks", beginAtZero);
+        JObject YAxes = new JObject("YAxes", Ticks);
+        JObject Scales = new JObject("Scales", YAxes);
+        JObject Responsive = new JObject("Responsive", true);
+        JObject Options = new JObject();
+        Options.Add("Responsive", Responsive);
+        Options.Add("Scales", Scales);
+        mConfig.Add("Options", Options);
+
+        
+
+        @* mConfig.Add(JObject.FromObject("Options", new { Responsive = true, Scales = new {YAxes = new { Ticks = new{BeginAtZero = true}}}})); *@
+        
+        
         //Here we create an anonymous type with all the options that need to be sent to Chart.js
         var config = new
         {
@@ -64,30 +84,34 @@
                         } }
                     }
                 },
-                Legend = new
-                {
-                    Display = false
-                }
             },
             Data = new
             {
-                Datasets = new[]
+                Datasets = new []
                 {
-                    new { Data = ChartParameter.Data, Label = ChartParameter.Label, BackgroundColor = BackgroundColor, Type = "bar"},
-                    @* new { Data = Data, Label = Label, BackgroundColor = BackgroundColorOfLine, Type = "line"}, *@
+                    new { Data = Data, Label = Label, BackgroundColor = BackgroundColor, Type = Type.ToString().ToLower(), Order = 3},
+                    new { Data = Data1, Label = Label1, BackgroundColor = BackgroundColor1, Type = "line", Order = 2},
+                    new { Data = Data2, Label = Label2, BackgroundColor = BackgroundColor2, Type = "line", Order = 1},
                 },
                 Labels = Labels
             }
         };
 
+        
+
         await JSRuntime.InvokeVoidAsync("setup", Id, config);
     }
 
     public void SetBackGroundColors(){
-        if(IsMixed){
+        if(Data1 != null || Data2 != null){
             foreach(string label in Labels){
-                BackgroundColor.Add("#6886c5");
-                BackgroundColorOfLine.Add("#B3000000");
+                BackgroundColor.Add("rgba(255, 0, 0, 0.5)");
+                if(Data1 != null){
+                    BackgroundColor1.Add("rgba(0, 0, 255, 0.5)");
+                }
+                if(Data2 != null){
+                    BackgroundColor2.Add("rgba(0, 75, 0, 0.5)");
+                }
             }
             return;
         }

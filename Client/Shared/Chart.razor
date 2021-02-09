@@ -50,24 +50,6 @@
     {
         SetBackGroundColors();
 
-        JObject mConfig = new JObject();
-        mConfig.Add("Type", Type.ToString().ToLower());
-
-        JObject beginAtZero = new JObject("BeginAtZero", true);
-        JObject Ticks = new JObject("Ticks", beginAtZero);
-        JObject YAxes = new JObject("YAxes", Ticks);
-        JObject Scales = new JObject("Scales", YAxes);
-        JObject Responsive = new JObject("Responsive", true);
-        JObject Options = new JObject();
-        Options.Add("Responsive", Responsive);
-        Options.Add("Scales", Scales);
-        mConfig.Add("Options", Options);
-
-        
-
-        @* mConfig.Add(JObject.FromObject("Options", new { Responsive = true, Scales = new {YAxes = new { Ticks = new{BeginAtZero = true}}}})); *@
-        
-        
         //Here we create an anonymous type with all the options that need to be sent to Chart.js
         var config = new
         {
@@ -87,17 +69,18 @@
             },
             Data = new
             {
-                Datasets = new []
-                {
-                    new { Data = Data, Label = Label, BackgroundColor = BackgroundColor, Type = Type.ToString().ToLower(), Order = 3},
-                    new { Data = Data1, Label = Label1, BackgroundColor = BackgroundColor1, Type = "line", Order = 2},
-                    new { Data = Data2, Label = Label2, BackgroundColor = BackgroundColor2, Type = "line", Order = 1},
-                },
+                Datasets = new List<Data.DataSet>(),
                 Labels = Labels
             }
         };
 
+        List<Data.DataSet> mList = new List<Data.DataSet>(){
+                    new Data.DataSet(Data, Label, BackgroundColor, Type.ToString().ToLower(), 3),
+                    new Data.DataSet(Data1, Label1, BackgroundColor1, "line", 2),
+                    new Data.DataSet(Data2, Label2, BackgroundColor2, "line", 1),
+            };
         
+        config.Data.Datasets.AddRange(mList);
 
         await JSRuntime.InvokeVoidAsync("setup", Id, config);
     }

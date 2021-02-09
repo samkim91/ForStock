@@ -19,55 +19,13 @@
 
     [Parameter]
     public List<string> Labels { get; set; } = new List<string>();
-    
+
+    @* Data, Label, Type, Order, BackgroudColor 등을 가진 object *@
     [Parameter]
-    public string Label { get; set; }
-
-    [Parameter]
-    public List<string> Data { get; set; } = new List<string>();
-
-    public List<string> BackgroundColor { get; set; } = new List<string>();
-
-    [Parameter]
-    public string Label1 { get; set; }
-
-    [Parameter]
-    public List<string> Data1 { get; set; } = new List<string>();
-
-    public List<string> BackgroundColor1 { get; set; } = new List<string>();
-
-    [Parameter]
-    public string Label2 { get; set; }
-
-    [Parameter]
-    public List<string> Data2 { get; set; } = new List<string>();
-
-    public List<string> BackgroundColor2 { get; set; } = new List<string>();
-
-
+    public List<DataSet> DataSets { get; set; } = new List<DataSet>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender) 
     {
-        SetBackGroundColors();
-
-        JObject mConfig = new JObject();
-        mConfig.Add("Type", Type.ToString().ToLower());
-
-        JObject beginAtZero = new JObject("BeginAtZero", true);
-        JObject Ticks = new JObject("Ticks", beginAtZero);
-        JObject YAxes = new JObject("YAxes", Ticks);
-        JObject Scales = new JObject("Scales", YAxes);
-        JObject Responsive = new JObject("Responsive", true);
-        JObject Options = new JObject();
-        Options.Add("Responsive", Responsive);
-        Options.Add("Scales", Scales);
-        mConfig.Add("Options", Options);
-
-        
-
-        @* mConfig.Add(JObject.FromObject("Options", new { Responsive = true, Scales = new {YAxes = new { Ticks = new{BeginAtZero = true}}}})); *@
-        
-        
         //Here we create an anonymous type with all the options that need to be sent to Chart.js
         var config = new
         {
@@ -87,45 +45,11 @@
             },
             Data = new
             {
-                Datasets = new []
-                {
-                    new { Data = Data, Label = Label, BackgroundColor = BackgroundColor, Type = Type.ToString().ToLower(), Order = 3},
-                    new { Data = Data1, Label = Label1, BackgroundColor = BackgroundColor1, Type = "line", Order = 2},
-                    new { Data = Data2, Label = Label2, BackgroundColor = BackgroundColor2, Type = "line", Order = 1},
-                },
+                Datasets = DataSets,
                 Labels = Labels
             }
         };
 
-        
-
         await JSRuntime.InvokeVoidAsync("setup", Id, config);
-    }
-
-    public void SetBackGroundColors(){
-        if(Data1 != null || Data2 != null){
-            foreach(string label in Labels){
-                BackgroundColor.Add("rgba(255, 0, 0, 0.5)");
-                if(Data1 != null){
-                    BackgroundColor1.Add("rgba(0, 0, 255, 0.5)");
-                }
-                if(Data2 != null){
-                    BackgroundColor2.Add("rgba(0, 75, 0, 0.5)");
-                }
-            }
-            return;
-        }
-
-        foreach(string label in Labels){
-            if(label.Contains("Q1")){
-                BackgroundColor.Add("#ffdcdc");
-            }else if(label.Contains("Q2")){
-                BackgroundColor.Add("#ffc3c3");
-            }else if(label.Contains("Q3")){
-                BackgroundColor.Add("#ffa9a9");
-            }else{
-                BackgroundColor.Add("#ff9090");
-            }
-        }
     }
 }

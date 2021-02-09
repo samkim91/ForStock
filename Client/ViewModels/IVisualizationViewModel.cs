@@ -11,12 +11,13 @@ namespace ForStock.Client.ViewModels
     public interface IVisualizationViewModel
     {
         public List<ChartDataModel> ChartDataModels { get; set; }
-        public ChartDataModel Revenue { get; set; }
-        public ChartDataModel GrossProfit { get; set; }
-        public ChartDataModel OperatingIncomeLoss { get; set; }
-        public ChartDataModel ProfitLoss { get; set; }
-        public ChartDataModel CostOfSales { get; set; }
-        public ChartDataModel SellingAndAdminExpenses { get; set; }
+        // public ChartDataModel Revenue { get; set; }
+        // public ChartDataModel GrossProfit { get; set; }
+        // public ChartDataModel OperatingIncomeLoss { get; set; }
+        // public ChartDataModel ProfitLoss { get; set; }
+        // public ChartDataModel CostOfSales { get; set; }
+        // public ChartDataModel SellingAndAdminExpenses { get; set; }
+        public ChartParameter QuarterPerformance { get; set; }
         public Task Init();
 
         // public void onLoadClick();

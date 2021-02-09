@@ -19,37 +19,13 @@
 
     [Parameter]
     public List<string> Labels { get; set; } = new List<string>();
-    
+
+    @* Data, Label, Type, Order, BackgroudColor 등을 가진 object *@
     [Parameter]
-    public string Label { get; set; }
-
-    [Parameter]
-    public List<string> Data { get; set; } = new List<string>();
-
-    public List<string> BackgroundColor { get; set; } = new List<string>();
-
-    [Parameter]
-    public string Label1 { get; set; }
-
-    [Parameter]
-    public List<string> Data1 { get; set; } = new List<string>();
-
-    public List<string> BackgroundColor1 { get; set; } = new List<string>();
-
-    [Parameter]
-    public string Label2 { get; set; }
-
-    [Parameter]
-    public List<string> Data2 { get; set; } = new List<string>();
-
-    public List<string> BackgroundColor2 { get; set; } = new List<string>();
-
-
+    public List<DataSet> DataSets { get; set; } = new List<DataSet>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender) 
     {
-        SetBackGroundColors();
-
         //Here we create an anonymous type with all the options that need to be sent to Chart.js
         var config = new
         {
@@ -69,46 +45,11 @@
             },
             Data = new
             {
-                Datasets = new List<Data.DataSet>(),
+                Datasets = DataSets,
                 Labels = Labels
             }
         };
 
-        List<Data.DataSet> mList = new List<Data.DataSet>(){
-                    new Data.DataSet(Data, Label, BackgroundColor, Type.ToString().ToLower(), 3),
-                    new Data.DataSet(Data1, Label1, BackgroundColor1, "line", 2),
-                    new Data.DataSet(Data2, Label2, BackgroundColor2, "line", 1),
-            };
-        
-        config.Data.Datasets.AddRange(mList);
-
         await JSRuntime.InvokeVoidAsync("setup", Id, config);
-    }
-
-    public void SetBackGroundColors(){
-        if(Data1 != null || Data2 != null){
-            foreach(string label in Labels){
-                BackgroundColor.Add("rgba(255, 0, 0, 0.5)");
-                if(Data1 != null){
-                    BackgroundColor1.Add("rgba(0, 0, 255, 0.5)");
-                }
-                if(Data2 != null){
-                    BackgroundColor2.Add("rgba(0, 75, 0, 0.5)");
-                }
-            }
-            return;
-        }
-
-        foreach(string label in Labels){
-            if(label.Contains("Q1")){
-                BackgroundColor.Add("#ffdcdc");
-            }else if(label.Contains("Q2")){
-                BackgroundColor.Add("#ffc3c3");
-            }else if(label.Contains("Q3")){
-                BackgroundColor.Add("#ffa9a9");
-            }else{
-                BackgroundColor.Add("#ff9090");
-            }
-        }
     }
 }

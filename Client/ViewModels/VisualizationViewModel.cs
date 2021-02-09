@@ -20,6 +20,7 @@ namespace ForStock.Client.ViewModels
         public ChartDataModel ProfitLoss { get; set; } = new ChartDataModel();
         public ChartDataModel CostOfSales { get; set; } = new ChartDataModel();
         public ChartDataModel SellingAndAdminExpenses { get; set; } = new ChartDataModel();
+        public ChartParameter QuarterPerformance { get; set; } = new ChartParameter("QuarterPerformance", "분기 실적");
 
         public VisualizationViewModel() { }
         public VisualizationViewModel(IIndexedDbFactory dbFactory)
@@ -42,6 +43,7 @@ namespace ForStock.Client.ViewModels
             }
             // 받아온 데이터를 각각의 분류(message field)에 따라서 필요한 데이터를 빼온다.
             getEachData();
+            setChartData();
         }
 
         public void getEachData()
@@ -70,5 +72,14 @@ namespace ForStock.Client.ViewModels
             SellingAndAdminExpenses = ChartDataModels.Single(c => c.Id == "sellingAndAdminExpenses");
             SellingAndAdminExpenses.DataSets.Reverse();
         }
+
+        public void setChartData(){
+            QuarterPerformance.Xvalues = Revenue.YearAndQuarters;
+            QuarterPerformance.DataSets.Clear();
+            QuarterPerformance.DataSets.Add(new DataSet(Revenue.Amounts, Revenue.Message, "bar", 3, "rgba(255, 0, 0, 0.5)"));
+            QuarterPerformance.DataSets.Add(new DataSet(GrossProfit.Amounts, GrossProfit.Message, "line", 2, "rgba(0, 0, 255, 0.5)"));
+            QuarterPerformance.DataSets.Add(new DataSet(OperatingIncomeLoss.Amounts, OperatingIncomeLoss.Message, "line", 1, "rgba(0, 75, 0, 0.5)"));
+        }
+
     }
 }

@@ -1,77 +1,52 @@
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
 
 namespace ForStock.Client.Models
 {
     public class ChartParameter
     {
-        public string Label { get; set; }
+        // Chart의 독립성을 가리기 위한 ID
+        public string Id { get; set; }
+        // Chart의 기본 type을 나타냄. 
+        public string Subject { get; set; }
+        public List<string> Xvalues { get; set; }
+        public List<DataSet> DataSets { get; set; } = new List<DataSet>();
+
+        public ChartParameter(){
+
+        }
+        public ChartParameter(string id, string subject)
+        {
+            this.Id = id;
+            this.Subject = subject;
+        }
+    }
+    
+    public class DataSet
+    {
         public List<string> Data { get; set; } = new List<string>();
-
-        public ChartParameter()
+        public string Label { get; set; }
+        public string Type { get; set; }
+        public int Order { get; set; }
+        public List<string> BackgroundColor { get; set; } = new List<string>();
+        
+        public DataSet()
         {
 
         }
-        public ChartParameter(string message, List<string> amounts)
+
+        public DataSet(List<string> data, string label, string type, int order, string backgroundColor)
         {
-            Label = message;
-            Data = amounts;
+            this.Data = data;
+            this.Label = label;
+            this.Type = type;
+            this.Order = order;
+            setBackGroundColor(backgroundColor);
         }
-    }
 
-    public class Config
-    {
-        public string type { get; set; }
-
-        public Options options { get; set; } = new Options();
-
-        public Data data { get; set; } = new Data();
-    }
-
-    public class Options
-    {
-        public bool responsive { get; set; } = true;
-
-        public Scales scales { get; set; } = new Scales();
-
-        public class Scales
+        public void setBackGroundColor(string backgroundColor)
         {
-            public YAxes yAxes { get; set; } = new YAxes();
-            public class YAxes
-            {
-                public Ticks ticks { get; set; } = new Ticks();
-                public class Ticks
-                {
-                    public bool beginAtZero { get; set; } = true;
-                }
-            }
-        }
-    }
-
-    public class Data
-    {
-        public List<string> labels { get; set; } = new List<string>();
-
-        public List<DataSet> dataSets { get; set; } = new List<DataSet>();
-
-        public class DataSet
-        {
-            public List<string> data { get; set; } = new List<string>();
-            public string label { get; set; }
-            public List<string> backgroundColor { get; set; } = new List<string>();
-            public string type { get; set; }
-            public int order { get; set; }
-
-            public DataSet(){
-
-            }
-
-            public DataSet(List<string> data, string label, List<string> backgroundColor, string type, int order){
-                this.data = data;
-                this.label = label;
-                this.backgroundColor = backgroundColor;
-                this.type = type;
-                this.order = order;
+            foreach(string data in Data){
+                BackgroundColor.Add(backgroundColor);
             }
         }
     }

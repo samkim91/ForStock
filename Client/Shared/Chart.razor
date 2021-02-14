@@ -38,8 +38,9 @@
                     YAxes = new[]
                     {
                         new { Ticks = new {
-                            BeginAtZero = true
-                        } }
+                            BeginAtZero = true,
+                            @* Callback = await JSRuntime.InvokeAsync<string>("changeFormat") Blazor에서 js를 호출하려다보니 뭐가 문제가 있다. 본래는 js fuction을 바로 써줘야하는데 안 됨 ..*@
+                        }}
                     }
                 },
             },

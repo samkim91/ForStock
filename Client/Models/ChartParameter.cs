@@ -27,27 +27,22 @@ namespace ForStock.Client.Models
         public string Label { get; set; }
         public string Type { get; set; }
         public int Order { get; set; }
-        public List<string> BackgroundColor { get; set; } = new List<string>();
-        
+        public string LineTension { get; set; } = "0"; // line chart에서 완만도를 나타내는데 0이면 직선.
+        public string BackgroundColor { get; set; }
+        public string BorderColor { get; set; }
         public DataSet()
         {
 
         }
 
-        public DataSet(List<string> data, string label, string type, int order, string backgroundColor)
+        public DataSet(List<string> data, string label, string type, int order, string backgroundColor, string borderColor)
         {
             this.Data = data;
             this.Label = label;
             this.Type = type;
             this.Order = order;
-            setBackGroundColor(backgroundColor);
-        }
-
-        public void setBackGroundColor(string backgroundColor)
-        {
-            foreach(string data in Data){
-                BackgroundColor.Add(backgroundColor);
-            }
+            this.BackgroundColor = backgroundColor;
+            this.BorderColor = borderColor;
         }
     }
 }

@@ -8,19 +8,16 @@
     <div class="col-sm">
       @if (@_visualizationViewModel.YearPerformance.DataSets != null)
       {
-        <h4>@_visualizationViewModel.YearPerformance.Subject</h4>
-        @* 현재 ChartParameter를 이용해서 parameter를 넘길 수 있는것까지 확인했다. 다음으로, ChartParameter를 이용해서 어떻게 mixed chart를 만들 수 있는지 확인해야함. *@
-        <Chart Id="_visualizationViewModel.YearPerformance.Id" Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.YearPerformance.Xvalues"
-          DataSets="_visualizationViewModel.YearPerformance.DataSets">
+        <Chart Id="_visualizationViewModel.YearPerformance.Id" Subject="@_visualizationViewModel.YearPerformance.Subject" Type="@Chart.ChartType.Bar"
+          Labels="_visualizationViewModel.YearPerformance.Xvalues" DataSets="_visualizationViewModel.YearPerformance.DataSets">
         </Chart>
       }
     </div>
     <div class="col-sm">
       @if (@_visualizationViewModel.YearCost.DataSets != null)
       {
-        <h4>@_visualizationViewModel.YearCost.Subject</h4>
-          <Chart Id="_visualizationViewModel.YearCost.Id" Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.YearCost.Xvalues"
-          DataSets="_visualizationViewModel.YearCost.DataSets">
+        <Chart Id="_visualizationViewModel.YearCost.Id" Subject="@_visualizationViewModel.YearCost.Subject" Type="@Chart.ChartType.Bar" 
+          Labels="_visualizationViewModel.YearCost.Xvalues" DataSets="_visualizationViewModel.YearCost.DataSets">
         </Chart>
       }
     </div>
@@ -30,19 +27,16 @@
     <div class="col-sm">
       @if (@_visualizationViewModel.QuarterPerformance.DataSets != null)
       {
-        <h4>@_visualizationViewModel.QuarterPerformance.Subject</h4>
-        @* 현재 ChartParameter를 이용해서 parameter를 넘길 수 있는것까지 확인했다. 다음으로, ChartParameter를 이용해서 어떻게 mixed chart를 만들 수 있는지 확인해야함. *@
-        <Chart Id="_visualizationViewModel.QuarterPerformance.Id" Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.QuarterPerformance.Xvalues"
-          DataSets="_visualizationViewModel.QuarterPerformance.DataSets">
+        <Chart Id="_visualizationViewModel.QuarterPerformance.Id" Subject="@_visualizationViewModel.QuarterPerformance.Subject" Type="@Chart.ChartType.Bar" 
+          Labels="_visualizationViewModel.QuarterPerformance.Xvalues" DataSets="_visualizationViewModel.QuarterPerformance.DataSets">
         </Chart>
       }
     </div>
     <div class="col-sm">
       @if (@_visualizationViewModel.QuarterCost.DataSets != null)
       {
-        <h4>@_visualizationViewModel.QuarterCost.Subject</h4>
-          <Chart Id="_visualizationViewModel.QuarterCost.Id" Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.QuarterCost.Xvalues"
-          DataSets="_visualizationViewModel.QuarterCost.DataSets">
+        <Chart Id="_visualizationViewModel.QuarterCost.Id" Subject="@_visualizationViewModel.QuarterCost.Subject" Type="@Chart.ChartType.Bar" 
+          Labels="_visualizationViewModel.QuarterCost.Xvalues" DataSets="_visualizationViewModel.QuarterCost.DataSets">
         </Chart>
       }
     </div>

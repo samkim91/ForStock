@@ -8,8 +8,11 @@
     public enum ChartType
     {
         Pie,
-        Bar
+        Bar,
+        Line
     }
+    [Parameter]
+    public string Subject { get; set; }
 
     [Parameter]
     public string Id { get; set; }
@@ -32,6 +35,11 @@
             Type = Type.ToString().ToLower(),
             Options = new
             {
+                Title = new
+                {
+                  Display = true,
+                  Text = Subject
+                },
                 Responsive = true,
                 Scales = new
                 {

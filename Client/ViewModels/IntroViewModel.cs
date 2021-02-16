@@ -144,6 +144,8 @@ namespace ForStock.Client.ViewModels
                         }
                     }
                 }
+                // 정리가 끝나면 year > quarter 순으로 바꾼다.
+                chartDataModel.DataSets.Reverse();
             }
         }
 

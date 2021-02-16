@@ -6,34 +6,75 @@ using System.Linq;
 namespace ForStock.Client.Models
 {
     public class ChartDataModel
-    {   
+    {
         [Key]
         public string Id { get; set; }
         public string Message { get; set; }
-        public List<string> Amounts {
-            get{
+
+        public List<string> QuarterAmounts
+        {
+            get
+            {
                 return (from ds in DataSets select ds.Amount).ToList();
             }
-            set{
+            set
+            {
 
             }
         }
-        public List<string> YearAndQuarters{
-            get{
+        public List<string> YearAmounts
+        {
+            get
+            {
+                // long의 형식으로 나오기 떄문에 string 으로 바꿔준다.
+                var tempResult = (from ds in DataSets
+                        group ds by ds.Year into EveryYear
+                        select EveryYear.Sum(ds => long.Parse(ds.Amount))).ToList();
+
+                return tempResult.ConvertAll<string>(x => x.ToString());
+            }
+        }
+        public List<IGrouping<string, ChartDataSet>> AmountsGroupByQuarter
+        {
+            get
+            {
+                // long의 형식으로 나오기 떄문에 string 으로 바꿔준다.
+                var tempResult = (from ds in DataSets
+                                    group ds by ds.Quarter into g
+                                    orderby g.Key
+                                    select g).ToList();
+
+                return tempResult;
+            }
+        }
+        public List<string> Years
+        {
+            get
+            {
+                return (from ds in DataSets select ds.Year).Distinct().ToList();
+            }
+        }
+        public List<string> YearAndQuarters
+        {
+            get
+            {
                 return (from ds in DataSets select ds.YearAndQuarter).ToList();
             }
-            set{
+            set
+            {
 
             }
         }
 
+
         public List<ChartDataSet> DataSets { get; set; } = new List<ChartDataSet>();
-        
+
         public ChartDataModel()
         {
         }
-        
-        public ChartDataModel(string id, string message){
+
+        public ChartDataModel(string id, string message)
+        {
             Id = id;
             Message = message;
         }

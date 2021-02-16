@@ -2,24 +2,41 @@
 @using ForStock.Client.ViewModels
 @inject IVisualizationViewModel _visualizationViewModel
 @* model이 set되지 않았는데 부르려다보니까 error가 계속 터졌던 것임. Not an object... load가 끝나면, 또는 null이 아니면 실행되게끔 변경해야함. *@
+<p><strong>* 마지막 연도에는 기업에서 제출한 분기 재무제표까지만 합산/전시됩니다.</strong></p>
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      @if (@_visualizationViewModel.QuarterPerformance.DataSets != null)
+      @if (@_visualizationViewModel.YearPerformance.DataSets != null)
       {
-        <h4>@_visualizationViewModel.QuarterPerformance.Subject</h4>
-        @* 현재 ChartParameter를 이용해서 parameter를 넘길 수 있는것까지 확인했다. 다음으로, ChartParameter를 이용해서 어떻게 mixed chart를 만들 수 있는지 확인해야함. *@
-        <Chart Id="_visualizationViewModel.QuarterPerformance.Id" Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.QuarterPerformance.Xvalues"
-          DataSets="_visualizationViewModel.QuarterPerformance.DataSets">
+        <Chart Id="_visualizationViewModel.YearPerformance.Id" Subject="@_visualizationViewModel.YearPerformance.Subject" Type="@Chart.ChartType.Bar"
+          Labels="_visualizationViewModel.YearPerformance.Xvalues" DataSets="_visualizationViewModel.YearPerformance.DataSets">
         </Chart>
       }
     </div>
     <div class="col-sm">
+      @if (@_visualizationViewModel.YearCost.DataSets != null)
+      {
+        <Chart Id="_visualizationViewModel.YearCost.Id" Subject="@_visualizationViewModel.YearCost.Subject" Type="@Chart.ChartType.Bar" 
+          Labels="_visualizationViewModel.YearCost.Xvalues" DataSets="_visualizationViewModel.YearCost.DataSets">
+        </Chart>
+      }
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-sm">
       @if (@_visualizationViewModel.QuarterPerformance.DataSets != null)
       {
-        <h4>@_visualizationViewModel.QuarterPerformance.Subject</h4>
-          <Chart Id="something" Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.QuarterPerformance.Xvalues"
-          DataSets="_visualizationViewModel.QuarterPerformance.DataSets">
+        <Chart Id="_visualizationViewModel.QuarterPerformance.Id" Subject="@_visualizationViewModel.QuarterPerformance.Subject" Type="@Chart.ChartType.Bar" 
+          Labels="_visualizationViewModel.QuarterPerformance.Xvalues" DataSets="_visualizationViewModel.QuarterPerformance.DataSets">
+        </Chart>
+      }
+    </div>
+    <div class="col-sm">
+      @if (@_visualizationViewModel.QuarterCost.DataSets != null)
+      {
+        <Chart Id="_visualizationViewModel.QuarterCost.Id" Subject="@_visualizationViewModel.QuarterCost.Subject" Type="@Chart.ChartType.Bar" 
+          Labels="_visualizationViewModel.QuarterCost.Xvalues" DataSets="_visualizationViewModel.QuarterCost.DataSets">
         </Chart>
       }
     </div>

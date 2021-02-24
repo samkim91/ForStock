@@ -38,7 +38,7 @@ namespace ForStock.Client.Models
         {
             get
             {
-                // long의 형식으로 나오기 떄문에 string 으로 바꿔준다.
+                // long의 형식으로 나오기 때문에 string 으로 바꿔준다.
                 var tempResult = (from ds in DataSets
                                     group ds by ds.Quarter into g
                                     orderby g.Key

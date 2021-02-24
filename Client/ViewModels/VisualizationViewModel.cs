@@ -101,6 +101,12 @@ namespace ForStock.Client.ViewModels
             QuarterCost.DataSets.Add(new DataSet(Revenue.QuarterAmounts, Revenue.Message, "bar", 3, "rgba(255, 0, 0, 0.5)", "rgba(0, 0, 0, 0)"));
             QuarterCost.DataSets.Add(new DataSet(CostOfSales.QuarterAmounts, CostOfSales.Message, "line", 2, "rgba(0, 0, 0, 0)", "rgba(0, 0, 255)"));
             QuarterCost.DataSets.Add(new DataSet(SellingAndAdminExpenses.QuarterAmounts, SellingAndAdminExpenses.Message, "line", 1, "rgba(0, 0, 0, 0)", "rgba(0, 100, 0)"));
+
+            // 분기그룹 매출액 Todo..
+
+
+            // 분기그룹 영업이익 Todo..
+
         }
 
     }

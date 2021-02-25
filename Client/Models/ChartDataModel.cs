@@ -10,7 +10,6 @@ namespace ForStock.Client.Models
         [Key]
         public string Id { get; set; }
         public string Message { get; set; }
-
         public List<string> QuarterAmounts
         {
             get
@@ -38,9 +37,20 @@ namespace ForStock.Client.Models
         {
             get
             {
-                // long의 형식으로 나오기 때문에 string 으로 바꿔준다.
                 var tempResult = (from ds in DataSets
                                     group ds by ds.Quarter into g
+                                    orderby g.Key
+                                    select g).ToList();
+
+                return tempResult;
+            }
+        }
+        public List<IGrouping<string, ChartDataSet>> AmountsGroupByYear
+        {
+            get
+            {
+                var tempResult = (from ds in DataSets
+                                    group ds by ds.Year into g
                                     orderby g.Key
                                     select g).ToList();
 
@@ -65,8 +75,6 @@ namespace ForStock.Client.Models
 
             }
         }
-
-
         public List<ChartDataSet> DataSets { get; set; } = new List<ChartDataSet>();
 
         public ChartDataModel()

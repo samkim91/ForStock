@@ -24,6 +24,8 @@ namespace ForStock.Client.ViewModels
         public ChartParameter YearCost {get;set;} = new ChartParameter("YearCost", "연간 비용");
         public ChartParameter QuarterPerformance { get; set; } = new ChartParameter("QuarterPerformance", "분기 실적");
         public ChartParameter QuarterCost { get; set; } = new ChartParameter("QuarterCost", "분기 비용");
+        public ChartParameter GroupedQuarterRevenue { get; set; } = new ChartParameter("GroupedQuarterRevenue", "분기별 매출액");
+        public ChartParameter GroupedQuarterOperationIncomeLoss { get; set; } = new ChartParameter("GroupedQuarterOperationIncomeLoss", "분기별 영업이익");
 
         public VisualizationViewModel() { }
         public VisualizationViewModel(IIndexedDbFactory dbFactory)
@@ -103,10 +105,11 @@ namespace ForStock.Client.ViewModels
             QuarterCost.DataSets.Add(new DataSet(SellingAndAdminExpenses.QuarterAmounts, SellingAndAdminExpenses.Message, "line", 1, "rgba(0, 0, 0, 0)", "rgba(0, 100, 0)"));
 
             // 분기그룹 매출액 Todo..
+            // GroupedQuarterRevenue.Xvalues = (List<string>)Revenue.AmountsGroupByQuarter.Select(c => c.Select(d => d.Quarter).Distinct());
 
-
+            
             // 분기그룹 영업이익 Todo..
-
+            // GroupedQuarterOperationIncomeLoss.Xvalues = 
         }
 
     }

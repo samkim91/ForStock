@@ -15,6 +15,8 @@ namespace ForStock.Client.ViewModels
         public ChartParameter YearCost { get; set; }
         public ChartParameter QuarterPerformance { get; set; }
         public ChartParameter QuarterCost { get; set; }
+        public ChartParameter GroupedQuarterRevenue { get; set; }
+        public ChartParameter GroupedQuarterOperationIncomeLoss { get; set; }
         public Task Init();
 
         // public void onLoadClick();

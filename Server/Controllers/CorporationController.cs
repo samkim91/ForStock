@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ForStock.Shared.Model;
+using ForStock.Shared.Models;
 using ForStock.Server.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Json;
+using ForStock.Shared.Common;
 
 namespace ForStock.Server.Controllers
 {

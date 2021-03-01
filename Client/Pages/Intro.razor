@@ -3,14 +3,21 @@
 @inject IIntroViewModel _introViewModel
 
 <div>
+  <EditForm Model="@_introViewModel.introModel">
     <div>
         <div>API key</div>
-        <input type="text" @bind-value="_introViewModel.introModel.crtfc_key" class="form-control" placeholder="API key를 입력하세요.">
+        <input type="text" @bind-value="_introViewModel.introModel.crtfc_key" class="form-control" placeholder="API key를 입력하세요." required>
+    </div>
+    <br />
+    <div>
+        <div>회사명</div>
+        <input type="text" @bind-value="_introViewModel.introModel.stock_code" class="form-control" placeholder="회사명을 입력하세요." required>
     </div>
     <br />
     <div>
         <div>주식코드</div>
-        <input type="text" @bind-value="_introViewModel.introModel.stock_code" class="form-control" placeholder="주식코드를 입력하세요.">
+        <input type="number" @bind-value="_introViewModel.introModel.stock_code" class="form-control" placeholder="주식코드를 입력하세요.">
+        <small class="form-text text-muted">회사명으로 검색이 되지 않을 경우에 종목코드를 사용하시면 됩니다.</small>
     </div>
     <br />
     <div>
@@ -24,6 +31,7 @@
     </div>
     <br />
     <button class="btn btn-primary float-right" @onclick="_introViewModel.GetDataOnclick">Get Data</button>
+  </EditForm>
 </div>
     <br />
     <br />

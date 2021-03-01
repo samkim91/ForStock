@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Blazor.IndexedDB.Framework;
 using ForStock.Client.Common;
 using ForStock.Client.Models;
-using ForStock.Shared.Model;
+using ForStock.Shared.Models;
 
 namespace ForStock.Client.ViewModels
 {
@@ -46,7 +46,15 @@ namespace ForStock.Client.ViewModels
         }
 
         public async Task GetDataOnclick()
-        {
+        {   
+            if(introModel.crtfc_key == null || introModel.corp_name == null){
+                // 필수값 채워달라는 메시지 나타내기
+
+                
+                return;
+            }
+
+            saveIntroModelToIndexedDb(introModel);
 
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
             // parameters : api_key, stock_code, fs_div
@@ -77,9 +85,8 @@ namespace ForStock.Client.ViewModels
             }
 
             MakeFinancialStatementsToMyData(financialStatements);
-            bindCorpInfoToView(corporationInfo);
-            saveIntroModelToIndexedDb(introModel);
             saveCorpInfoToIndexedDb(corporationInfo);
+            bindCorpInfoToView(corporationInfo);
         }
 
         // Dart API로 받아온 financial statements를 필요한 data로 변환해서 정리함.

@@ -1,7 +1,6 @@
-using System.ComponentModel;
 using System.Threading.Tasks;
 using ForStock.Client.Models;
-using ForStock.Shared.Model;
+using ForStock.Shared.Models;
 
 namespace ForStock.Client.ViewModels
 {

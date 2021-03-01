@@ -1,18 +1,16 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Blazor.IndexedDB.Framework;
 using ForStock.Client.Common;
 using ForStock.Client.Models;
-using ForStock.Shared.Model;
 
 namespace ForStock.Client.ViewModels
 {
     public class VisualizationViewModel : IVisualizationViewModel
     {
         private IIndexedDbFactory _dbFactory { get; set; }
+        private readonly List<string> QuartersForXvalues = new List<string>{"Q1", "Q2", "Q3", "Q4"};
         public List<ChartDataModel> ChartDataModels { get; set; } = new List<ChartDataModel>();
         public ChartDataModel Revenue { get; set; } = new ChartDataModel();
         public ChartDataModel GrossProfit { get; set; } = new ChartDataModel();
@@ -104,12 +102,48 @@ namespace ForStock.Client.ViewModels
             QuarterCost.DataSets.Add(new DataSet(CostOfSales.QuarterAmounts, CostOfSales.Message, "line", 2, "rgba(0, 0, 0, 0)", "rgba(0, 0, 255)"));
             QuarterCost.DataSets.Add(new DataSet(SellingAndAdminExpenses.QuarterAmounts, SellingAndAdminExpenses.Message, "line", 1, "rgba(0, 0, 0, 0)", "rgba(0, 100, 0)"));
 
-            // 분기그룹 매출액 Todo..
-            // GroupedQuarterRevenue.Xvalues = (List<string>)Revenue.AmountsGroupByQuarter.Select(c => c.Select(d => d.Quarter).Distinct());
+            // 분기그룹 매출액
+            GroupedQuarterRevenue.Xvalues = QuartersForXvalues;
+            GroupedQuarterRevenue.DataSets.Clear();
+            for (int i = 0; i < Revenue.AmountsGroupByYear.Count; i++)
+            {
+                IGrouping<string, ChartDataSet> GCDS = Revenue.AmountsGroupByYear[i];
 
-            
-            // 분기그룹 영업이익 Todo..
-            // GroupedQuarterOperationIncomeLoss.Xvalues = 
+                List<string> data = GCDS.Select(c => c.Amount).ToList();
+                string label = GCDS.First().Year;
+                string backGroundColor = ColorHelper(i);
+
+                GroupedQuarterRevenue.DataSets.Add(new DataSet(data, label, "bar", i, backGroundColor, "rgba(0, 0, 0, 0)"));
+            }
+
+            // 분기그룹 영업이익
+            GroupedQuarterOperationIncomeLoss.Xvalues = QuartersForXvalues;
+            GroupedQuarterOperationIncomeLoss.DataSets.Clear();
+            for (int i = 0; i < OperatingIncomeLoss.AmountsGroupByYear.Count; i++)
+            {
+                IGrouping<string, ChartDataSet> GCDS = OperatingIncomeLoss.AmountsGroupByYear[i];
+
+                List<string> data = GCDS.Select(c => c.Amount).ToList();
+                string label = GCDS.First().Year;
+                string backGroundColor = ColorHelper(i);
+
+                GroupedQuarterOperationIncomeLoss.DataSets.Add(new DataSet(data, label, "bar", i, backGroundColor, "rgba(0, 0, 0, 0)"));
+            }
+        }
+
+        public string ColorHelper(int index){
+            switch(index){
+                case 0:
+                return "rgba(255, 0, 0, 0.5)";
+                case 1:
+                return "rgba(0, 0, 255, 0.5)";
+                case 2:
+                return "rgba(0, 100, 0, 0.5)";
+                case 3:
+                return "rgba(255, 255, 0, 0.5)";
+                default:
+                return "rgba(50, 50, 50, 0.5)";
+            }
         }
 
     }

@@ -5,41 +5,74 @@
 <p><strong>* 마지막 연도에는 기업에서 제출한 분기 재무제표까지만 합산/전시됩니다.</strong></p>
 <div class="container">
   <div class="row">
-    <div class="col">
-      @if (@_visualizationViewModel.YearPerformance.DataSets != null)
-      {
-        <Chart Id="_visualizationViewModel.YearPerformance.Id" Subject="@_visualizationViewModel.YearPerformance.Subject" Type="@Chart.ChartType.Bar"
-          Labels="_visualizationViewModel.YearPerformance.Xvalues" DataSets="_visualizationViewModel.YearPerformance.DataSets">
+    @if (@_visualizationViewModel.YearPerformance.DataSets.Count > 0)
+    {
+      <div class="col">
+        <!--연간 실적-->
+        <Chart Id="_visualizationViewModel.YearPerformance.Id" Subject="@_visualizationViewModel.YearPerformance.Subject"
+          Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.YearPerformance.Xvalues"
+          DataSets="_visualizationViewModel.YearPerformance.DataSets">
         </Chart>
-      }
-    </div>
-    <div class="col">
-      @if (@_visualizationViewModel.YearCost.DataSets != null)
-      {
-        <Chart Id="_visualizationViewModel.YearCost.Id" Subject="@_visualizationViewModel.YearCost.Subject" Type="@Chart.ChartType.Bar" 
-          Labels="_visualizationViewModel.YearCost.Xvalues" DataSets="_visualizationViewModel.YearCost.DataSets">
+      </div>
+    }
+    @if (@_visualizationViewModel.YearCost.DataSets.Count > 0)
+    {
+      <div class="col">
+        <!--연간 비용-->
+        <Chart Id="_visualizationViewModel.YearCost.Id" Subject="@_visualizationViewModel.YearCost.Subject"
+          Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.YearCost.Xvalues"
+          DataSets="_visualizationViewModel.YearCost.DataSets">
         </Chart>
-      }
-    </div>
+      </div>
+    }
   </div>
-  <hr/>
+  <hr />
   <div class="row">
-    <div class="col">
-      @if (@_visualizationViewModel.QuarterPerformance.DataSets != null)
-      {
-        <Chart Id="_visualizationViewModel.QuarterPerformance.Id" Subject="@_visualizationViewModel.QuarterPerformance.Subject" Type="@Chart.ChartType.Bar" 
-          Labels="_visualizationViewModel.QuarterPerformance.Xvalues" DataSets="_visualizationViewModel.QuarterPerformance.DataSets">
+    @if (@_visualizationViewModel.QuarterPerformance.DataSets.Count > 0)
+    {
+      <div class="col">
+        <!--분기 실적-->
+        <Chart Id="_visualizationViewModel.QuarterPerformance.Id"
+          Subject="@_visualizationViewModel.QuarterPerformance.Subject" Type="@Chart.ChartType.Bar"
+          Labels="_visualizationViewModel.QuarterPerformance.Xvalues"
+          DataSets="_visualizationViewModel.QuarterPerformance.DataSets">
         </Chart>
-      }
-    </div>
-    <div class="col">
-      @if (@_visualizationViewModel.QuarterCost.DataSets != null)
-      {
-        <Chart Id="_visualizationViewModel.QuarterCost.Id" Subject="@_visualizationViewModel.QuarterCost.Subject" Type="@Chart.ChartType.Bar" 
-          Labels="_visualizationViewModel.QuarterCost.Xvalues" DataSets="_visualizationViewModel.QuarterCost.DataSets">
+      </div>
+    }
+    @if (@_visualizationViewModel.QuarterCost.DataSets.Count > 0)
+    {
+      <div class="col">
+        <!--분기 비용-->
+        <Chart Id="_visualizationViewModel.QuarterCost.Id" Subject="@_visualizationViewModel.QuarterCost.Subject"
+          Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.QuarterCost.Xvalues"
+          DataSets="_visualizationViewModel.QuarterCost.DataSets">
         </Chart>
-      }
-    </div>
+      </div>
+    }
+  </div>
+  <hr />
+  <div class="row">
+    @if (@_visualizationViewModel.GroupedQuarterRevenue.DataSets.Count > 0)
+    {
+      <div class="col">
+        <!--분기그룹 매출액-->
+        <Chart Id="_visualizationViewModel.GroupedQuarterRevenue.Id"
+          Subject="@_visualizationViewModel.GroupedQuarterRevenue.Subject" Type="@Chart.ChartType.Bar"
+          Labels="_visualizationViewModel.GroupedQuarterRevenue.Xvalues"
+          DataSets="_visualizationViewModel.GroupedQuarterRevenue.DataSets">
+        </Chart>
+      </div>
+    }
+    @if (@_visualizationViewModel.GroupedQuarterOperationIncomeLoss.DataSets.Count > 0)
+    {
+      <div class="col">
+        <!--분기그룹 영업 이익-->
+        <Chart Id="_visualizationViewModel.GroupedQuarterOperationIncomeLoss.Id" Subject="@_visualizationViewModel.GroupedQuarterOperationIncomeLoss.Subject"
+          Type="@Chart.ChartType.Bar" Labels="_visualizationViewModel.GroupedQuarterOperationIncomeLoss.Xvalues"
+          DataSets="_visualizationViewModel.GroupedQuarterOperationIncomeLoss.DataSets">
+        </Chart>
+      </div>
+    }
   </div>
 </div>
 

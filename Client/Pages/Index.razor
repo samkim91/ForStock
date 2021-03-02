@@ -13,7 +13,8 @@
             <li><a href="https://opendart.fss.or.kr">Open Dart 홈페이지</a>에 들어가셔서 API key를 발급 받는다. 등록을 위한 이메일이 수신되니 확인한다.</li>
             <li>로그인 후 API key 값을 복사한다.</li>
             <li>Intro tab에 가서 API key란에 복사한 key를 넣어준다.</li>
-            <li>그 아래 찾고자 하는 주식코드를 입력한다.</li>
+            <li>그 아래 찾고자 하는 회사의 이름을 입력한다.</li>
+            <li>* 주식코드는 회사명으로 검색이 되지 않을 경우 활용한다.</li>
             <li>연결재무재표는 CFS, 개별재무재표는 OFS를 선택한다.</li>
             <li>Get Data를 클릭한다.</li>
         </ol>
@@ -25,11 +26,22 @@
     <div class="card-body">
         <h2>주의사항</h2>
         <ul>
-            <li>화면에 저장되는 값들은 사용하는 기기의 브라우저에 저장되니 다른 곳에선 다시 찾아야한다.</li>
-            <li>기업 data를 가져오는 것은 1일 10,000번의 요청을 보낼 수 있는데, 한 기업에 8번 정도 사용되니 대략 1,250개의 기업 정보를 확인 가능하다.</li>
-            <li><a href="https://opendart.fss.or.kr/mng/apiUsageStatusView.do">1일 사용량 확인</a>은 Link에서 가능하다. (로그인 필요)</li>
-            <li>금융회사의 재무재표는 확인할 수 없다.</li>
-            <li>기업에서 제공한 재무재표에 오차/오류가 있을 수 있으니 참고하자.</li>
+            <li>화면에 저장되는 값들은 사용하는 기기의 브라우저에 저장됩니다. 즉, 다른 기기에서는 새로 get data를 해야 값이 저장될 것 입니다.</li>
+            <li>브라우저는 크롬, 파이어폭스, 크로미움 엣지 등을 권장합니다.</li>
+            <li>기업 data를 가져오는 것은 1일 10,000번의 요청을 보낼 수 있는데, 한 기업에 25번 정도 사용되니 대략 400개의 기업 정보를 확인 가능합니다.</li>
+            <li>1일 사용량 확인은 <a href="https://opendart.fss.or.kr/mng/apiUsageStatusView.do">Link</a>에서 가능합니다. (로그인 필요)</li>
+            <li>금융회사의 재무재표는 확인할 수 없습니다. 기업에서 제공한 재무재표에 오차/오류가 있을 수 있으니 참고하시기 바랍니다.</li>
+        </ul>
+    </div>
+</div>
+<br />
+
+<div class="card">
+    <div class="card-body">
+        <h2>개발자 : Enterprise Developer</h2>
+        <ul>
+            <li>각종 오류, 버그, 문제 등은 연락바랍니다. kimh616@gmail.com</li>
+            <li><a href="https://epdev.tistory.com">Blog</a></li>
         </ul>
     </div>
 </div>

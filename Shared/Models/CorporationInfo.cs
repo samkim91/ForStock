@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ForStock.Shared.Model
+namespace ForStock.Shared.Models
 {
     public class CorporationInfo
     {

@@ -6,6 +6,7 @@ namespace ForStock.Client.Models
     {
         [Key]
         public string crtfc_key { get; set; }
+        public string corp_name { get; set; }
         public string stock_code { get; set; }
         public string fs_div { get; set; } = "OFS";
     }

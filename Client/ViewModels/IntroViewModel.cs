@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Blazor.IndexedDB.Framework;
 using ForStock.Client.Common;
 using ForStock.Client.Models;
-using ForStock.Shared.Model;
+using ForStock.Shared.Models;
 
 namespace ForStock.Client.ViewModels
 {
@@ -47,39 +47,47 @@ namespace ForStock.Client.ViewModels
 
         public async Task GetDataOnclick()
         {
+            saveIntroModelToIndexedDb(introModel);
+
+            string key_word = !String.IsNullOrWhiteSpace(introModel.corp_name) ? introModel.corp_name : introModel.stock_code;
+
+            if (String.IsNullOrWhiteSpace(introModel.crtfc_key) || String.IsNullOrWhiteSpace(key_word))
+            {
+                IsRequestSuccessful = false;
+                Message = "필수값을 채워주세요.";
+
+                return;
+            }
+
+            // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
+            // parameters : api_key, stock_code
+            // response : corpInfo
+            CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + introModel.crtfc_key + "/" + key_word);
+                        
+            if (corporationInfo.message != "정상")
+            {
+                IsRequestSuccessful = false;
+                Message = "Message from Corporation info : " + corporationInfo.message;
+
+                return;
+            }
 
             // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
             // parameters : api_key, stock_code, fs_div
             // response : financialstatements
             List<FinancialStatement> financialStatements = await _httpClient.GetFromJsonAsync<List<FinancialStatement>>("corporation/financialstatement/"
-                                                                 + introModel.crtfc_key + "/" + introModel.stock_code + "/" + introModel.fs_div);
-
-            // Client로부터 입력된 stock_code로 Corporation의 code(Primary Key)를 찾고, 이 corp_code를 이용해서 corp info를 가져온다.
-            // parameters : api_key, stock_code
-            // response : corpInfo
-            CorporationInfo corporationInfo = await _httpClient.GetFromJsonAsync<CorporationInfo>("corporation/info/" + introModel.crtfc_key + "/" + introModel.stock_code);
-
-            // Http response에 대한 검증을 함.
-            if (!financialStatements.Any(fs => fs.message == "정상") || corporationInfo.message != "정상")
+                                                                 + introModel.crtfc_key + "/" + key_word + "/" + introModel.fs_div);
+            if (!financialStatements.Any(fs => fs.message == "정상"))
             {
                 IsRequestSuccessful = false;
-
-                if (!financialStatements.Any(fs => fs.message == "정상"))
-                {
-                    Message = "Message from Financial statement : " + financialStatements.FirstOrDefault(fs => fs.message != "정상").message;
-                }
-                else if (corporationInfo.message != "정상")
-                {
-                    Message = "Message from Corporation info : " + corporationInfo.message;
-                }
+                Message = "Message from Financial statement : " + financialStatements.FirstOrDefault(fs => fs.message != "정상").message;
 
                 return;
             }
-
+            
             MakeFinancialStatementsToMyData(financialStatements);
-            bindCorpInfoToView(corporationInfo);
-            saveIntroModelToIndexedDb(introModel);
             saveCorpInfoToIndexedDb(corporationInfo);
+            bindCorpInfoToView(corporationInfo);
         }
 
         // Dart API로 받아온 financial statements를 필요한 data로 변환해서 정리함.
@@ -109,8 +117,8 @@ namespace ForStock.Client.ViewModels
                                                       where list != null && (list.account_nm == "영업이익" || list.account_nm == "영업이익(손실)")
                                                       select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
                 profitLoss.DataSets.AddRange(from list in financialStatement.list
-                                              where list != null && list.account_nm == "당기순이익(손실)" && list.sj_nm == "손익계산서"
-                                              select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
+                                             where list != null && list.account_nm == "당기순이익(손실)" && list.sj_nm == "손익계산서"
+                                             select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
                 costOfSales.DataSets.AddRange(from list in financialStatement.list
                                               where list != null && list.account_nm == "매출원가"
                                               select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
@@ -138,7 +146,7 @@ namespace ForStock.Client.ViewModels
                 {
                     if (chartDataModel.DataSets[i].Quarter == "Q4")
                     {
-                        if (chartDataModel.DataSets[i + 1].Amount != null && chartDataModel.DataSets[i + 2].Amount != null && chartDataModel.DataSets[i + 3].Amount != null)
+                        if (chartDataModel.DataSets[i + 1] != null && chartDataModel.DataSets[i + 2] != null && chartDataModel.DataSets[i + 3] != null)
                         {
                             chartDataModel.DataSets[i].Amount = (Convert.ToInt64(chartDataModel.DataSets[i].Amount) - Convert.ToInt64(chartDataModel.DataSets[i + 1].Amount) - Convert.ToInt64(chartDataModel.DataSets[i + 2].Amount) - Convert.ToInt64(chartDataModel.DataSets[i + 3].Amount)).ToString();
                         }
@@ -147,6 +155,14 @@ namespace ForStock.Client.ViewModels
                 // 정리가 끝나면 year > quarter 순으로 바꾼다.
                 chartDataModel.DataSets.Reverse();
             }
+        }
+
+        private string subtractQuarters(ChartDataModel chartDataModel, int index){
+            // 인덱스가 넘어가면 문제가 되고 있음....이거 수정해야함...
+            
+            
+
+            return subtractQuarters(chartDataModel, index);
         }
 
         // Dart API로 받아온 corporation info를 viewModel에 set함.

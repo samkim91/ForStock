@@ -4,7 +4,7 @@ using System.Linq;
 using System;
 using Newtonsoft.Json.Linq;
 
-namespace ForStock.Server.Common
+namespace ForStock.Shared.Common
 {
     public class DateHelper
     {

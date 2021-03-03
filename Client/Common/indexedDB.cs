@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Blazor.IndexedDB.Framework;
 using ForStock.Client.Models;
-using ForStock.Shared.Model;
+using ForStock.Shared.Models;
 using Microsoft.JSInterop;
 
 namespace ForStock.Client.Common

@@ -3,27 +3,37 @@
 @inject IIntroViewModel _introViewModel
 
 <div>
+  <EditForm Model="@_introViewModel.introModel">
     <div>
-        <div>API key</div>
-        <input type="text" @bind-value="_introViewModel.introModel.crtfc_key" class="form-control" placeholder="API key를 입력하세요.">
+        <label>API key</label>
+        <input type="text" @bind-value="_introViewModel.introModel.crtfc_key" class="form-control" placeholder="API key를 입력하세요." required>
     </div>
     <br />
     <div>
-        <div>주식코드</div>
-        <input type="text" @bind-value="_introViewModel.introModel.stock_code" class="form-control" placeholder="주식코드를 입력하세요.">
+        <label>회사명</label>
+        <input type="text" @bind-value="_introViewModel.introModel.corp_name" class="form-control" placeholder="회사명을 입력하세요." required>
     </div>
     <br />
     <div>
-        <div>개별(OFS)/연결(CFS)</div>
+        <label>주식코드</label>
+        <input type="number" @bind-value="_introViewModel.introModel.stock_code" class="form-control" placeholder="주식코드를 입력하세요.">
+        <small class="form-text text-muted">회사명으로 검색이 되지 않을 때, 주식코드로 검색해보세요.</small>
+    </div>
+    <br />
+    <div>
+        <label>개별(OFS)/연결(CFS)</label>
         <div>
             <select class="custom-select" @bind="_introViewModel.introModel.fs_div">
                 <option selected value="OFS">개별(OFS)</option>
                 <option value="CFS">연결(CFS)</option>
             </select>
         </div>
+        <small class="form-text text-muted"><a href="https://www.google.com/search?sxsrf=ALeKk034CSYYcz18_iXfpDptcFle9GaXpg%3A1614687017389&ei=KSs-YKGhF9eGr7wPnq2JsAo&q=%EC%97%B0%EA%B2%B0%EC%9E%AC%EB%AC%B4%EC%A0%9C%ED%91%9C+%EA%B0%9C%EB%B3%84%EC%9E%AC%EB%AC%B4%EC%A0%9C%ED%91%9C&oq=%EC%97%B0%EA%B2%B0%EC%9E%AC%EB%AC%B4%EC%A0%9C%ED%91%9C+%EA%B0%9C%EB%B3%84%EC%9E%AC%EB%AC%B4%EC%A0%9C%ED%91%9C&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECcyBggAEAgQHjoHCCMQsAMQJzoHCAAQRxCwAzoCCAA6BwgAEIcCEBQ6BAgAEEM6BwgjELECECc6BAgAEAo6BwgjELACECc6CAgAEAgQDRAeULBBWIplYK9maAxwAngFgAFiiAGfFZIBAjMxmAEAoAEBqgEHZ3dzLXdpesgBA8ABAQ&sclient=gws-wiz&ved=0ahUKEwjh2eDwyZHvAhVXw4sBHZ5WAqYQ4dUDCA0&uact=5" target="_blank">
+               개별(OFS)/연결(CFS)재무제표란?</a></small>
     </div>
     <br />
     <button class="btn btn-primary float-right" @onclick="_introViewModel.GetDataOnclick">Get Data</button>
+  </EditForm>
 </div>
     <br />
     <br />

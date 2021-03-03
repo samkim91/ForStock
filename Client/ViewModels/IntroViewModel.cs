@@ -108,22 +108,22 @@ namespace ForStock.Client.ViewModels
             foreach (FinancialStatement financialStatement in financialStatements)
             {
                 revenue.DataSets.AddRange(from list in financialStatement.list
-                                          where list != null && list.account_nm == "수익(매출액)" || list.account_nm == "매출액"
+                                          where list != null && list.account_id.Contains("Revenue")     // 수익(매출액)
                                           select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
                 grossProfit.DataSets.AddRange(from list in financialStatement.list
-                                              where list != null && list.account_nm == "매출총이익"
+                                              where list != null && list.account_id.Contains("GrossProfit")      // 매출 총이익
                                               select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
                 operatingIncomeLoss.DataSets.AddRange(from list in financialStatement.list
-                                                      where list != null && (list.account_nm == "영업이익" || list.account_nm == "영업이익(손실)")
+                                                      where list != null && list.account_id.Contains("OperatingIncomeLoss")        // 영업이익
                                                       select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
                 profitLoss.DataSets.AddRange(from list in financialStatement.list
-                                             where list != null && list.account_nm == "당기순이익(손실)" && list.sj_nm == "손익계산서"
+                                             where list != null && list.account_id.Contains("ProfitLoss") && !list.account_id.Contains("BeforeTax") && list.sj_div.Contains("CIS")      // 당기순이익
                                              select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
                 costOfSales.DataSets.AddRange(from list in financialStatement.list
-                                              where list != null && list.account_nm == "매출원가"
+                                              where list != null && list.account_id.Contains("CostOfSales")        // 매출원가
                                               select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
                 sellingAndAdminExpenses.DataSets.AddRange(from list in financialStatement.list
-                                                          where list != null && list.account_nm == "판매비와관리비"
+                                                          where list != null && list.account_id.Contains("dart_TotalSellingGeneralAdministrativeExpenses")      // 판매비와 관리비
                                                           select new ChartDataSet(list.bsns_year, list.reprt_code, list.thstrm_amount));
             }
             chartDataModels.Add(revenue);
@@ -146,10 +146,7 @@ namespace ForStock.Client.ViewModels
                 {
                     if (chartDataModel.DataSets[i].Quarter == "Q4")
                     {
-                        if (chartDataModel.DataSets[i + 1] != null && chartDataModel.DataSets[i + 2] != null && chartDataModel.DataSets[i + 3] != null)
-                        {
-                            chartDataModel.DataSets[i].Amount = (Convert.ToInt64(chartDataModel.DataSets[i].Amount) - Convert.ToInt64(chartDataModel.DataSets[i + 1].Amount) - Convert.ToInt64(chartDataModel.DataSets[i + 2].Amount) - Convert.ToInt64(chartDataModel.DataSets[i + 3].Amount)).ToString();
-                        }
+                        chartDataModel.DataSets[i].Amount = (Convert.ToInt64(chartDataModel.DataSets[i].Amount) - subtractQuarterAmount(chartDataModel, i, 3)).ToString();
                     }
                 }
                 // 정리가 끝나면 year > quarter 순으로 바꾼다.
@@ -157,12 +154,25 @@ namespace ForStock.Client.ViewModels
             }
         }
 
-        private string subtractQuarters(ChartDataModel chartDataModel, int index){
-            // 인덱스가 넘어가면 문제가 되고 있음....이거 수정해야함...
+        private long subtractQuarterAmount(ChartDataModel chartDataModel, int i, int count){
+            i++;        //DataSets의 index
+            count--;    // 4분기를 기준으로 3개의 분기(1,2,3분기)만 가져오기 위함.
             
-            
+            // 1번째 조건은 3개의 분기를 다 가져온 경우이므로, return
+            // 2번째 조건은 index가 DataSets list를 초과한 경우이므로, error 방지를 위해 return
+            if (count == -1 || i == chartDataModel.DataSets.Count)
+            {
+                return 0;
+            }
 
-            return subtractQuarters(chartDataModel, index);
+            // 다음 분기의 결과
+            long result = Convert.ToInt64(chartDataModel.DataSets[i].Amount);
+
+            // 그 다음 분기의 결과와 합
+            result += subtractQuarterAmount(chartDataModel, i, count);
+
+            // 1,2,3분기의 amount가 재귀적으로 모두 합쳐져서 return될 것임.
+            return result;
         }
 
         // Dart API로 받아온 corporation info를 viewModel에 set함.

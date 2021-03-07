@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blazor.IndexedDB.Framework;
-using ForStock.Client.Common;
 using ForStock.Client.Models;
+using TG.Blazor.IndexedDB;
 
 namespace ForStock.Client.ViewModels
 {
     public class VisualizationViewModel : IVisualizationViewModel
     {
-        private IIndexedDbFactory _dbFactory { get; set; }
+        private IndexedDBManager DBManager { get; set; }
         private readonly List<string> QuartersForXvalues = new List<string>{"Q1", "Q2", "Q3", "Q4"};
         public List<ChartDataModel> ChartDataModels { get; set; } = new List<ChartDataModel>();
         public ChartDataModel Revenue { get; set; } = new ChartDataModel();
@@ -26,23 +25,18 @@ namespace ForStock.Client.ViewModels
         public ChartParameter GroupedQuarterOperationIncomeLoss { get; set; } = new ChartParameter("GroupedQuarterOperationIncomeLoss", "분기별 영업이익");
 
         public VisualizationViewModel() { }
-        public VisualizationViewModel(IIndexedDbFactory dbFactory)
+        public VisualizationViewModel(IndexedDBManager dBManager)
         {
-            _dbFactory = dbFactory;
+            DBManager = dBManager;
         }
 
         public async Task Init()
         {
             // indexed DB에서 데이터를 받아온다.
-            await this._dbFactory.Create<MyIndexedDB>();
+            ChartDataModels = await DBManager.GetRecords<ChartDataModel>("ChartDataModel");
 
-            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
-            {
-                if (!db.ChartDataModel.Any())
-                {
-                    return;
-                }
-                ChartDataModels = db.ChartDataModel.Select(row => row).ToList<ChartDataModel>();
+            if(ChartDataModels == null){
+                return;
             }
             // 받아온 데이터를 각각의 분류(message field)에 따라서 필요한 데이터를 빼온다.
             getEachData();

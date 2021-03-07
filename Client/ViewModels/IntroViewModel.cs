@@ -4,10 +4,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Blazor.IndexedDB.Framework;
-using ForStock.Client.Common;
 using ForStock.Client.Models;
 using ForStock.Shared.Models;
+using TG.Blazor.IndexedDB;
 
 namespace ForStock.Client.ViewModels
 {
@@ -16,32 +15,30 @@ namespace ForStock.Client.ViewModels
         public CorporationInfo corporationInfo { get; set; } = new CorporationInfo();
         public IntroModel introModel { get; set; } = new IntroModel();
         private HttpClient _httpClient { get; set; }
-        private IIndexedDbFactory _dbFactory { get; set; }
+        private IndexedDBManager DBManager { get; set; }
         public bool IsRequestSuccessful { get; set; } = true;
         public string Message { get; set; }
 
         public IntroViewModel() { }
 
-        public IntroViewModel(HttpClient httpClient, IIndexedDbFactory dbFactory)
+        public IntroViewModel(HttpClient httpClient, IndexedDBManager dBManager)
         {
             _httpClient = httpClient;
-            _dbFactory = dbFactory;
+            DBManager = dBManager;
         }
 
         public async Task GetInitInfoFromDb()
         {
             // DB를 확인해서 값이 있으면 초기값을 불러와서 set 해준다.
-            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
-            {
-                if (db.IntroModel.Any())
-                {
-                    introModel = db.IntroModel.First();
-                }
+            
+            List<IntroModel> mIntroModel = await DBManager.GetRecords<IntroModel>("IntroModel");
+            if(mIntroModel.Count > 0){
+                introModel = mIntroModel[0];
+            }
 
-                if (db.CorporationInfo.Any())
-                {
-                    corporationInfo = db.CorporationInfo.First();
-                }
+            List<CorporationInfo> mCorporationInfo = await DBManager.GetRecords<CorporationInfo>("CorporationInfo");          
+            if(mCorporationInfo.Count > 0){
+                corporationInfo = mCorporationInfo[0];
             }
         }
 
@@ -199,36 +196,24 @@ namespace ForStock.Client.ViewModels
         // 사용자가 입력한 intro data를 Indexed DB에 저장함.
         private async void saveIntroModelToIndexedDb(IntroModel introModel)
         {
-            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
-            {
-                db.IntroModel.Clear();
-                db.IntroModel.Add(introModel);
-                await db.SaveChanges();
-            }
+            await DBManager.ClearStore("IntroModel");
+            await DBManager.AddRecord(new StoreRecord<IntroModel> { Storename = "IntroModel", Data = introModel });
         }
 
         // Dart API로 받아온 corporation info를 Indexed DB에 저장함.
         private async void saveCorpInfoToIndexedDb(CorporationInfo corporationInfo)
         {
-            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
-            {
-                db.CorporationInfo.Clear();
-                db.CorporationInfo.Add(corporationInfo);
-                await db.SaveChanges();
-            }
+            await DBManager.ClearStore("CorporationInfo");
+            await DBManager.AddRecord(new StoreRecord<CorporationInfo> { Storename = "CorporationInfo", Data = corporationInfo });
         }
 
         // Dart API로 받고 정리한, Financial statements info를 Indexed DB에 저장함.
         private async void saveChartDataModelToIndexedDb(List<ChartDataModel> chartDataModels)
         {
-            using (MyIndexedDB db = await this._dbFactory.Create<MyIndexedDB>())
+            await DBManager.ClearStore("ChartDataModel");
+            foreach (ChartDataModel chartDataModel in chartDataModels)
             {
-                db.ChartDataModel.Clear();
-                foreach (ChartDataModel chartDataModel in chartDataModels)
-                {
-                    db.ChartDataModel.Add(chartDataModel);
-                }
-                await db.SaveChanges();
+                await DBManager.AddRecord(new StoreRecord<ChartDataModel> { Storename = "ChartDataModel", Data = chartDataModel });
             }
         }
     }
